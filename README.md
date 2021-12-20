@@ -1,13 +1,13 @@
 # Mythia Batford
 
-<a href="https://github.com/Johannes2803/Mythia-Batford/network/members"><img title="Forks" src="https://img.shields.io/github/forks/BochilGaming/games-wabot?label=Forks&color=blue&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/BochilGaming/games-wabot?label=Watchers&color=green&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/BochilGaming/games-wabot?label=Stars&color=yellow&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/graphs/contributors"><img title="Contributors" src="https://img.shields.io/github/contributors/BochilGaming/games-wabot?label=Contributors&color=blue&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/issues"><img title="Issues" src="https://img.shields.io/github/issues/BochilGaming/games-wabot?label=Issues&color=success&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/issues?q=is%3Aissue+is%3Aclosed"><img title="Issues" src="https://img.shields.io/github/issues-closed/BochilGaming/games-wabot?label=Issues&color=red&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/BochilGaming/games-wabot?label=PullRequest&color=success&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/BochilGaming/games-wabot?label=PullRequest&color=red&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Johannes2803/Mythia-Batford?label=Forks&color=blue&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/Johannes2803/Mythia-Batford?label=Watchers&color=green&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/Johannes2803/Mythia-Batford?label=Stars&color=yellow&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/graphs/contributors"><img title="Contributors" src="https://img.shields.io/github/contributors/Johannes2803/Mythia-Batford?label=Contributors&color=blue&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/issues"><img title="Issues" src="https://img.shields.io/github/issues/Johannes2803/Mythia-Batford?label=Issues&color=success&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/issues?q=is%3Aissue+is%3Aclosed"><img title="Issues" src="https://img.shields.io/github/issues-closed/Johannes2803/Mythia-Batford?label=Issues&color=red&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/Johannes2803/Mythia-Batford?label=PullRequest&color=success&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/Johannes2803/Mythia-Batford?label=PullRequest&color=red&style=flat-square"></a>
 
 ## Join Group Diskusi
 [![Grup WhatsApp](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/DYbwxUvMEzTEsOuYQnBDm2) 
@@ -155,11 +155,7 @@ conn.logger.level = 'debug'
 [![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo)
 [![BochilGaming](https://github.com/BochilGaming.png?size=100)](https://github.com/BochilGaming)
 [![Johannes](https://github.com/Johannes2803.png?size=100)](https://github.com/Johannes2803)
+[![LitRHap](https://github.com/LitRHap.png?size=100)](https://github.com/LitRHap)
 
 #### Contributor
-[![idhamthoriqbot](https://github.com/idhamthoriqbot.png?size=100)](https://github.com/idhamthoriqbot)
-[![zatu22](https://github.com/zatu22)](https://github.com/zatu22)
-[![Adiixyz](https://github.com/Adiixyz.png?size=100)](https://github.com/Adiixyz)
-[![Nobuyaki](https://github.com/Nobuyaki.png?size=100)](https://github.com/Nobuyaki)
-[![arisawali2014](https://github.com/arisawali2014.png?size=100)](https://github.com/arisawali2014)
-[![botstylee](https://github.com/botstylee)](https://github.com/botstylee)
+-
