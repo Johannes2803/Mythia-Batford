@@ -1,23 +1,22 @@
-# Games-Wabot
+# Mythia Batford
 
-<a href="https://github.com/BochilGaming/games-wabot/network/members"><img title="Forks" src="https://img.shields.io/github/forks/BochilGaming/games-wabot?label=Forks&color=blue&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/BochilGaming/games-wabot?label=Watchers&color=green&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/BochilGaming/games-wabot?label=Stars&color=yellow&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/graphs/contributors"><img title="Contributors" src="https://img.shields.io/github/contributors/BochilGaming/games-wabot?label=Contributors&color=blue&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/issues"><img title="Issues" src="https://img.shields.io/github/issues/BochilGaming/games-wabot?label=Issues&color=success&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/issues?q=is%3Aissue+is%3Aclosed"><img title="Issues" src="https://img.shields.io/github/issues-closed/BochilGaming/games-wabot?label=Issues&color=red&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/BochilGaming/games-wabot?label=PullRequest&color=success&style=flat-square"></a>
-<a href="https://github.com/BochilGaming/games-wabot/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/BochilGaming/games-wabot?label=PullRequest&color=red&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/network/members"><img title="Forks" src="https://img.shields.io/github/forks/BochilGaming/games-wabot?label=Forks&color=blue&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/BochilGaming/games-wabot?label=Watchers&color=green&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/BochilGaming/games-wabot?label=Stars&color=yellow&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/graphs/contributors"><img title="Contributors" src="https://img.shields.io/github/contributors/BochilGaming/games-wabot?label=Contributors&color=blue&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/issues"><img title="Issues" src="https://img.shields.io/github/issues/BochilGaming/games-wabot?label=Issues&color=success&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/issues?q=is%3Aissue+is%3Aclosed"><img title="Issues" src="https://img.shields.io/github/issues-closed/BochilGaming/games-wabot?label=Issues&color=red&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/BochilGaming/games-wabot?label=PullRequest&color=success&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/BochilGaming/games-wabot?label=PullRequest&color=red&style=flat-square"></a>
 
 ## Join Group Diskusi
-[![Grup WhatsApp](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/GVwpKf83s42D1CnIfDW19G) 
-**NO BOT**
+[![Grup WhatsApp](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/DYbwxUvMEzTEsOuYQnBDm2) 
 
 ### FOR TERMUX USER
 ```bash
 pkg update && pkg upgrade
 pkg install bash && pkg install wget
-wget -O - https://raw.githubusercontent.com/BochilGaming/games-wabot/main/install2.sh | bash
+wget -O - https://raw.githubusercontent.com/Johannes2803/Mythia-Batford/master/install2.sh | bash
 ```
 
 ---------
@@ -45,14 +44,14 @@ apt install wget curl git ffmpeg imagemagick build-essential libcairo2-dev libpa
 
 ---------
 
-[ INSTALLING NODEJS & GAMES-WABOT ]
+[ INSTALLING NODEJS ]
 
 ```bash
 ubuntu
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 apt install -y nodejs gcc g++ make
-git clone https://github.com/BochilGaming/games-wabot
-cd games-wabot
+git clone https://github.com/Johannes2803/Mythia-Batford
+cd Mythia-Batford
 npm install
 npm update
 ```
@@ -67,8 +66,8 @@ npm update
 * Download And Install ImageMagick [`Click Here`](https://imagemagick.org/script/download.php)
 
 ```bash
-git clone https://github.com/BochilGaming/games-wabot
-cd games-wabot
+git clone https://github.com/Johannes2803/Mythia-Batford
+cd Mythia-Batford
 npm install
 npm update
 ```
@@ -152,10 +151,10 @@ conn.logger.level = 'debug'
 
 
 ### Thanks To 
-**Allah SWT**
 
 [![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo)
 [![BochilGaming](https://github.com/BochilGaming.png?size=100)](https://github.com/BochilGaming)
+[![Johannes](https://github.com/Johannes2803.png?size=100)](https://github.com/Johannes2803)
 
 #### Contributor
 [![idhamthoriqbot](https://github.com/idhamthoriqbot.png?size=100)](https://github.com/idhamthoriqbot)
