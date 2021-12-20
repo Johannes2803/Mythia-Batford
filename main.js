@@ -1,30 +1,20 @@
 require('./config.js')
-const { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
-const cloudDATABASEAdapter = require('./lib/cloudDATABASEAdapter')
-const { generate } = require('qrcode-terminal')
-const syntaxerror = require('syntax-error')
-const simple = require('./lib/simple')
-//  const logs = require('./lib/logs')
-const { promisify } = require('util')
-const yargs = require('yargs/yargs')
-const Readline = require('readline')
-const cp = require('child_process')
-const _ = require('lodash')
-const path = require('path')
-const fs = require('fs')
-var low
-try {
-  low = require('lowdb')
-} catch (e) {
-  low = require('./lib/lowdb')
-}
-const { Low, JSONFile } = low
-const mongoDB = require('./lib/mongoDB')
+let { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
+let { generate } = require('qrcode-terminal')
+let syntaxerror = require('syntax-error')
+let simple = require('./lib/simple')
+//  let logs = require('./lib/logs')
+let { promisify } = require('util')
+let yargs = require('yargs/yargs')
+let Readline = require('readline')
+let cp = require('child_process')
+let path = require('path')
+let fs = require('fs')
 
-const rl = Readline.createInterface(process.stdin, process.stdout)
-const WAConnection = simple.WAConnection(_WAConnection)
+let rl = Readline.createInterface(process.stdin, process.stdout)
+let WAConnection = simple.WAConnection(_WAConnection)
 
-
+global.owner = Object.keys(global.Owner)
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 global.timestamp = {
   start: new Date
@@ -33,54 +23,39 @@ global.timestamp = {
 const PORT = process.env.PORT || 3000
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || '\.~#/$,').replace(/[|\\{}()[\]^$+*?\-\^]/g, '\\$') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
-global.DATABASE = new Low(
-  /https?:\/\//.test(opts['DATABASE'] || '') ?
-    new cloudDATABASEAdapter(opts['DATABASE']) :
-    /mongoDB/.test(opts['DATABASE']) ?
-      new mongoDB(opts['DATABASE']) :
-      new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
-)
-global.DATABASE = global.DATABASE // Backwards Compatibility
-
-global.loadDatabase = async function loadDatabase() {
-  if (global.DATABASE.READ) return new Promise((resolve) => setInterval(function () { (!global.DATABASE.READ ? (clearInterval(this), resolve(global.DATABASE.data == null ? global.loadDatabase() : global.DATABASE.data)) : null) }, 0.5 * 1000))
-  if (global.DATABASE.data !== null) return
-  global.DATABASE.READ = true
-  await global.DATABASE.read()
-  global.DATABASE.READ = false
-  global.DATABASE.data = {
-    users: {},
-    chats: {},
-    stats: {},
-    msgs: {},
-    sticker: {},
-    settings: {},
-    ...(global.DATABASE.data || {})
-  }
-  global.DATABASE.chain = _.chain(global.DATABASE.data)
+global.DATABASE = new (require('./lib/database'))(`${opts._[0] ? opts._[0] + '_' : ''}database.json`, null, 2)
+if (!global.DATABASE.data.users) global.DATABASE.data = {
+  users: {},
+  chats: {},
+  stats: {},
+  msgs: {},
+  sticker: {},
 }
-loadDatabase()
-
+if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
+if (!global.DATABASE.data.stats) global.DATABASE.data.stats = {}
+if (!global.DATABASE.data.msgs) global.DATABASE.data.msgs = {}
+if (!global.DATABASE.data.sticker) global.DATABASE.data.sticker = {}
 global.conn = new WAConnection()
-conn.browserDescription = ['Melcanz-bot', 'Chrome', '3.0']
-let authFile = opts['session'] ? opts['session'] + '.json' : `session.data.json`
+let authFile = `${opts._[0] || 'session'}.data.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['trace']) conn.logger.level = 'trace'
 if (opts['debug']) conn.logger.level = 'debug'
 if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
-if (!opts['test']) setInterval(async () => {
-  await global.DATABASE.write()
-}, 60 * 1000) // menyimpan setiap menit
+let lastJSON = JSON.stringify(global.DATABASE.data)
+if (!opts['test']) setInterval(() => {
+  conn.logger.info('Saving database . . .')
+  if (JSON.stringify(global.DATABASE.data) == lastJSON) conn.logger.info('Database is up to date')
+  else {
+    global.DATABASE.save()
+    conn.logger.info('Done saving database!')
+    lastJSON = JSON.stringify(global.DATABASE.data)
+  }
+}, 60 * 1000) // Save every minute
 if (opts['server']) require('./server')(global.conn, PORT)
 
-conn.user = {
-  jid: '',
-  name: '',
-  phone: {},
-  ...(conn.user || {})
-}
+conn.connectOptions.maxQueryResponseTime = 60_000
 if (opts['test']) {
   conn.user = {
     jid: '2219191@s.whatsapp.net',
@@ -120,14 +95,13 @@ if (opts['test']) {
       }
     })
   }
-  rl.on('line', line => conn.sendMessage('123@s.whatsapp.net', line.trim(), 'conversation'))
+  rl.on('line', line => conn.sendMessage('994407638407@c.us', 'Bot Telah Tersambung Ke Database YukiBot', 'conversation'))
 } else {
   rl.on('line', line => {
+    global.DATABASE.save()
     process.send(line.trim())
   })
-  conn.connect().then(async () => {
-    conn.sendMessage('994407638407@c.us', '「 *NOTIFICATION!* 」\n\n_Bot Berhasil Terhubung!_', 'conversation');
-    if (global.DATABASE.data == null) await loadDatabase()
+  conn.connect().then(() => {
     fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
@@ -142,22 +116,19 @@ global.reloadHandler = function () {
     conn.off('chat-update', conn.handler)
     conn.off('message-delete', conn.onDelete)
     conn.off('group-participants-update', conn.onParticipantsUpdate)
-    conn.off('group-update', conn.onGroupUpdate)
     conn.off('CB:action,,call', conn.onCall)
   }
-  conn.welcome = 'hai, @user!\nselamat datang digrup @subject\n\n@desc'
-  conn.bye = 'sampai jumpa @user!'
-  conn.spromote = '@user sekarang admin'
-  conn.sdemote = '@user sekarang bukan admin'
+  conn.welcome = 'Hai, @user!\nSelamat datang di grup @subject'
+  conn.bye = 'Selamat tinggal @user!'
+  conn.spromote = '@user sekarang admin!'
+  conn.sdemote = '@user sekarang bukan admin!'
   conn.handler = handler.handler
   conn.onDelete = handler.delete
   conn.onParticipantsUpdate = handler.participantsUpdate
-  conn.onGroupUpdate = handler.GroupUpdate
   conn.onCall = handler.onCall
   conn.on('chat-update', conn.handler)
   conn.on('message-delete', conn.onDelete)
   conn.on('group-participants-update', conn.onParticipantsUpdate)
-  conn.on('group-update', conn.onGroupUpdate)
   conn.on('CB:action,,call', conn.onCall)
   if (isInit) {
     conn.on('error', conn.logger.error)
@@ -192,20 +163,20 @@ for (let filename of fs.readdirSync(pluginFolder).filter(pluginFilter)) {
     delete global.plugins[filename]
   }
 }
-// console.log(Object.keys(global.plugins))
+console.log(Object.keys(global.plugins))
 global.reload = (_event, filename) => {
   if (pluginFilter(filename)) {
     let dir = path.join(pluginFolder, filename)
     if (dir in require.cache) {
       delete require.cache[dir]
-      if (fs.existsSync(dir)) conn.logger.info(`perubahan plugin '${filename}'`)
+      if (fs.existsSync(dir)) conn.logger.info(`re - require plugin '${filename}'`)
       else {
-        conn.logger.warn(`penghapusan plugin '${filename}'`)
+        conn.logger.warn(`deleted plugin '${filename}'`)
         return delete global.plugins[filename]
       }
-    } else conn.logger.info(`memerlukan plugin baru '${filename}'`)
-    let err = syntaxerror(fs.readFileSync(dir), filename)
-    if (err) conn.logger.error(`syntax error ketika membaca '${filename}'\n${err}`)
+    } else conn.logger.info(`requiring new plugin '${filename}'`)
+    let err = syntaxerror(fs.readFileSync(dir), fs.existsSync(dir) ? filename : 'Execution Function')
+    if (err) conn.logger.error(`syntax error while loading '${filename}'\n${err}`)
     else try {
       global.plugins[filename] = require(dir)
     } catch (e) {
@@ -218,6 +189,7 @@ global.reload = (_event, filename) => {
 Object.freeze(global.reload)
 fs.watch(path.join(__dirname, 'plugins'), global.reload)
 global.reloadHandler()
+process.on('exit', () => global.DATABASE.save())
 
 
 
@@ -255,9 +227,9 @@ async function _quickTest() {
   require('./lib/sticker').support = s
   Object.freeze(global.support)
 
-  if (!s.ffmpeg) conn.logger.warn('silakan instal ffmpeg untuk mengirim video (pkg install ffmpeg)')
-  if (s.ffmpeg && !s.ffmpegWebp) conn.logger.warn('stiker tidak boleh dianimasikan tanpa libwebp di ffmpeg (--enable-ibwebp while compiling ffmpeg)')
-  if (!s.convert && !s.magick && !s.gm) conn.logger.warn('stiker mungkin tidak berfungsi tanpa imagemagick jika libwebp di ffmpeg tidak diinstal (pkg install imagemagick)')
+  if (!s.ffmpeg) conn.logger.warn('Please install ffmpeg for sending videos (pkg install ffmpeg)')
+  if (s.ffmpeg && !s.ffmpegWebp) conn.logger.warn('Stickers may not animated without libwebp on ffmpeg (--enable-ibwebp while compiling ffmpeg)')
+  if (!s.convert && !s.magick && !s.gm) conn.logger.warn('Stickers may not work without imagemagick if libwebp on ffmpeg doesnt isntalled (pkg install imagemagick)')
 }
 
 _quickTest()
