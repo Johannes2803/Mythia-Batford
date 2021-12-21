@@ -1,4 +1,9 @@
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
+try {
+imeg = await conn.getProfilePicture(conn.user.jid)
+} catch {
+imeg = 'https://i.pinimg.com/originals/94/e7/21/94e721efd82d3aba7e7da4a0bde1b036.jpg'
+}
   let isEnable = /true|enable|(turn)?on|1/i.test(command)
   let chat = global.DATABASE._data.chats[m.chat]
   let user = global.DATABASE._data.users[m.sender]
@@ -77,39 +82,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       chat.antiLink = isEnable
       break
-    case 'toxic':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiToxic = !isEnable
-      break
-    case 'antitoxic':
-      if (m.isGroup) {
-        if (!(isAdmin || isOwner)) {
-          global.dfail('admin', m, conn)
-          throw false
-        }
-      }
-      chat.antiToxic = isEnable
-      break
     case 'autolevelup':
       isUser = true
       user.autolevelup = isEnable
-      break
-    case 'mycontact':
-    case 'mycontacts':
-    case 'whitelistcontact':
-    case 'whitelistcontacts':
-    case 'whitelistmycontact':
-    case 'whitelistmycontacts':
-      if (!isOwner) {
-        global.dfail('owner', m, conn)
-        throw false
-      }
-      conn.callWhitelistMode = isEnable
       break
     case 'restrict':
       isAll = true
@@ -164,7 +139,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       break
     default:
       if (!/[01]/.test(command)) return m.reply(`
-List option: welcome | delete | public | antilink | antidelete | antitoxic | autolevelup | detect | document | whitelistmycontacts | restrict | nyimak | autoread | pconly | gconly | swonly
+List option: welcome | delete | public | antilink | antidelete | autolevelup | detect | document | restrict | nyimak | autoread | pconly | gconly | swonly
 
 Contoh:
 ${usedPrefix}enable welcome
@@ -172,9 +147,14 @@ ${usedPrefix}disable welcome
 `.trim())
       throw false
   }
-  m.reply(`
-*${type}* berhasil di *${isEnable ? 'nyala' : 'mati'}kan* ${isAll ? 'untuk bot ini' : isUser ? '' : 'untuk chat ini'}
-`.trim())
+prep = conn.prepareMessageFromContent(m.chat, { orderMessage: { 
+itemCount: 99999999, status: 1,
+message: '```BERHASIL```',
+orderTitle: 'B',
+sellerJid: '62895603352610@s.whatsapp.net',
+thumbnail: await (await require('node-fetch')(imeg)).buffer(),
+}}, {contextInfo: null, quoted: m})
+conn.relayWAMessage(prep)
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
