@@ -1,14 +1,14 @@
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-    let res = await fetch('https://api.waifu.pics/sfw/waifu')
+    let res = await fetch(API('lol', '/random2/waifu', {}, 'apikey'))
     if (!res.ok) throw eror
     let json = await res.json()
     if (!json.status) throw json
-    conn.sendButtonImg(m.chat, json.result, 'Nieh banh waifunya', wm, 'waifu again', `${usedPrefix + command}`, m)
+    conn.sendButtonImg(m.chat, json, 'Nieh banh lolinya', '', 'loli again', `${usedPrefix + command}`, m)
 }
-handler.help = ['waifu']
+handler.help = ['loli']
 handler.tags = ['fun']
-handler.command = /^(waifu)$/i
+handler.command = /^(loli)$/i
 
 module.exports = handler
