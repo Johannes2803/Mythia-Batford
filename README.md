@@ -9,6 +9,8 @@
 <a href="https://github.com/Johannes2803/Mythia-Batford/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/Johannes2803/Mythia-Batford?label=PullRequest&color=success&style=flat-square"></a>
 <a href="https://github.com/Johannes2803/Mythia-Batford/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/Johannes2803/Mythia-Batford?label=PullRequest&color=red&style=flat-square"></a>
 
+## RUN Bot Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/LitRHap/wabot)
 ## Join Group Diskusi
 [![Grup WhatsApp](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/DYbwxUvMEzTEsOuYQnBDm2) 
 
