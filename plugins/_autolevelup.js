@@ -1,60 +1,52 @@
-let levelling = require('../lib/levelling')
-const canvacord = require('canvacord')
-
 let handler = m => m
-
-handler.before = async function (m) {
-        let user = global.DATABASE._data.users[m.sender]
-        let users = Object.entries(global.DATABASE._data.users).map(([key, value]) => {
-                return { ...value, jid: key }
+let levelling = require('../lib/levelling')
+handler.before = m => {
+    let user = global.DATABASE._data.users[m.sender]
+    if (!user.autolevelup) return
+    if (m.sender === global.conn.user.jid) return
+    let before = user.level * 1
+    while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
+    if (before !== user.level) {
+        let str = `
+「 SELAMAT 」\n
+➸ Name : @${m.sender.split`@`[0]}
+➸ XP : ${user.exp}
+➸ Level :*${before}* -> *${user.level}* 
+Congratulations 🎉
+`.trim()
+        conn.sendButton(m.chat, str, 'Made By Johannes', 'PROFILE', '#profile', {
+            contextInfo: {
+                mentionedJid: [m.sender]
+            }
         })
-        let pp = './src/avatar_contact.png'
-        let who = m.sender
-        let discriminator = who.substring(9, 13)
-        let sortedLevel = users.map(toNumber('level')).sort(sort('level'))
-        let usersLevel = sortedLevel.map(enumGetKey)
-        let { min, xp, max } = levelling.xpRange(user.level, global.multiplier)
-        try {
-                pp = await this.getProfilePicture(who)
-        } catch (e) {
-
-        } finally {
-
-                if (!user.autolevelup) return !0
-                let before = user.level * 1
-                while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
-
-                if (before !== user.level) {
-                        let rank = await new canvacord.Rank()
-                                .setRank(usersLevel.indexOf(m.sender) + 1)
-                                .setAvatar(pp)
-                                .setLevel(user.level)
-                                .setCurrentXP(user.exp - min)
-                                .setRequiredXP(xp)
-                                .setProgressBar("#f2aa4c", "COLOR")
-                                .setUsername(this.getName(who))
-                                .setDiscriminator(discriminator);
-                        rank.build()
-                                .then(async data => {
-                                        await this.sendButtonImg(m.chat, data, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), '© stikerin', 'Daily', ',daily')
-                                })
-                }
-        }
+    }
+    return true
 }
+ 
+module.exports = handlerlet handler = m => m
+let levelling = require('../lib/levelling')
+handler.before = m => {
+    let name = conn.getName(m.sender)
+    let user = global.DATABASE._data.users[m.sender]
+    if (!user.autolevelup) return
+    if (m.sender === global.conn.user.jid) return
+    let before = user.level * 1
+    while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
+    if (before !== user.level) {
+        let str =  `
+「 SELAMAT 」
+➸ Name : ${name}
+➸ XP : ${user.exp}
+➸ Level :*${before}* -> *${user.level}* 
+Congratulations 🎉
+ `.trim() 
+        conn.sendMessage(m.chat, str, m, {
+            contextInfo: {
+                mentionedJid: [m.sender]
+            }
+        })
+    }
+    return true
+}
+ 
 module.exports = handler
-
-function sort(property, ascending = true) {
-        if (property) return (...args) => args[ascending & 1][property] - args[!ascending & 1][property]
-        else return (...args) => args[ascending & 1] - args[!ascending & 1]
-}
-
-function toNumber(property, _default = 0) {
-        if (property) return (a, i, b) => {
-                return { ...b[i], [property]: a[property] === undefined ? _default : a[property] }
-        }
-        else return a => a === undefined ? _default : a
-}
-
-function enumGetKey(a) {
-        return a.jid
-}
