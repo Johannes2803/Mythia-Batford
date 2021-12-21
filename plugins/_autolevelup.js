@@ -1,85 +1,60 @@
-let { spawn } = require('child_process')
 let levelling = require('../lib/levelling')
-module.exports = {
-  before(m) {
-    let user = global.DATABASE._data.users[m.sender]
-    if (!user.autolevelup) return !0
-    if (m.sender === conn.user.jid) return
-    let before = user.level * 1
-    while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
-    if (before !== user.level) {
-      let d = new Date(new Date + 3600000)
-      let locale = 'id'
-      let time = d.toLocaleTimeString(locale, {
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
-      })
-      let name = this.getName(m.sender)
-      let lvlnow = user.level
-      let teks = `Selamat *${name}* naik 🧬level`
-      let str = `
-${teks} 
+const canvacord = require('canvacord')
 
-• 🧬Level Sebelumnya : ${before}
-• 🧬Level Baru : ${lvlnow}
-• Pada Jam : ${time}
+let handler = m => m
 
-*_Semakin sering berinteraksi dengan bot Semakin Tinggi level kamu_*
-`.trim()
-      if (global.support.convert || global.support.magick || global.support.gm) {
-        let fontLevel = 'src/level_c.otf'
-        let fontTexts = 'src/texts.otf'
-        let bufs = []
-        const [_spawnprocess, ..._spawnargs] = [...(global.support.gm ? ['gm'] : global.support.magick ? ['magick'] : []),
-          'convert',
-          '-font',
-          fontTexts,
-          '-fill',
-          '#0F3E6A',
-          '-size',
-          '1024x784',
-          '-pointsize',
-          '68',
-          '-interline-spacing',
-          '-7.5',
-          '-annotate',
-          '+153+200',
-          teks,
-          //original together
-          '-font',
-          fontLevel,
-          '-fill',
-          '#0A2A48',
-          '-size',
-          '1024x784',
-          '-pointsize',
-          '140',
-          '-interline-spacing',
-          '-1.2',
-          '-annotate',
-          '+1370+260',
-          lvlnow,
-          '-append',
-        ]
-        spawn(_spawnprocess, _spawnargs)
-          .on('error', e => {
-            throw e
-          })
-          .on('close', () => {
-            this.sendFile(m.chat, Buffer.concat(bufs), str, m)
-          })
-          .stdout.on('data', chunk => bufs.push(chunk))
-
-      } else {
-        m.reply(str, m.chat, {
-          contextInfo: {
-            mentionedJid: [m.sender]
-          }
+handler.before = async function (m) {
+        let user = global.DATABASE._data.users[m.sender]
+        let users = Object.entries(global.DATABASE._data.users).map(([key, value]) => {
+                return { ...value, jid: key }
         })
-      }
-    }
+        let pp = './src/avatar_contact.png'
+        let who = m.sender
+        let discriminator = who.substring(9, 13)
+        let sortedLevel = users.map(toNumber('level')).sort(sort('level'))
+        let usersLevel = sortedLevel.map(enumGetKey)
+        let { min, xp, max } = levelling.xpRange(user.level, global.multiplier)
+        try {
+                pp = await this.getProfilePicture(who)
+        } catch (e) {
 
-    return true
-  }
+        } finally {
+
+                if (!user.autolevelup) return !0
+                let before = user.level * 1
+                while (levelling.canLevelUp(user.level, user.exp, global.multiplier)) user.level++
+
+                if (before !== user.level) {
+                        let rank = await new canvacord.Rank()
+                                .setRank(usersLevel.indexOf(m.sender) + 1)
+                                .setAvatar(pp)
+                                .setLevel(user.level)
+                                .setCurrentXP(user.exp - min)
+                                .setRequiredXP(xp)
+                                .setProgressBar("#f2aa4c", "COLOR")
+                                .setUsername(this.getName(who))
+                                .setDiscriminator(discriminator);
+                        rank.build()
+                                .then(async data => {
+                                        await this.sendButtonImg(m.chat, data, `_*Level Up!*_\n_${before}_ -> _${user.level}_`.trim(), '© stikerin', 'Daily', ',daily')
+                                })
+                }
+        }
+}
+module.exports = handler
+
+function sort(property, ascending = true) {
+        if (property) return (...args) => args[ascending & 1][property] - args[!ascending & 1][property]
+        else return (...args) => args[ascending & 1] - args[!ascending & 1]
+}
+
+function toNumber(property, _default = 0) {
+        if (property) return (a, i, b) => {
+                return { ...b[i], [property]: a[property] === undefined ? _default : a[property] }
+        }
+        else return a => a === undefined ? _default : a
+}
+
+function enumGetKey(a) {
+        return a.jid
 }
