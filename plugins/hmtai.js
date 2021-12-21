@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 		}, 'buttonsMessage', { quoted: m })
 	} else throw json
 }
-handler.help = ['ass', 'bdsm', 'blowjob', 'boobjob', 'cum', 'creampie', 'cuckold', 'ero', 'elves', 'femdom', 'foot', 'gangbang', 'glasses', 'hentai', 'incest', 'masturbation', 'neko', 'pantsu', 'public', 'orgy', 'tentacles', 'thighs', 'uniform', 'vagina', 'yuri' ]
+handler.help = ['ass', 'bdsm', 'blowjob', 'boobjob', 'cum', 'creampie', 'cuckold', 'ero', 'elves', 'femdom', 'foot', 'gangbang', 'glasses', 'hentai', 'incest', 'masturbation', 'pantsu', 'orgy', 'tentacles', 'thighs', 'uniform', 'vagina', 'yuri' ]
 handler.tags = ['dewasa']
-handler.command = /^(ass|bdsm|blowjob|boobjob|cum|creampie|cuckold|ero|elves|femdom|foot|gangbang|glasses|hentai|incest|masturbation|neko|pantsu|public|orgy|tentacles|thighs|uniform|vagina|yuri)$/i
+handler.command = /^(ass|bdsm|blowjob|boobjob|cum|creampie|cuckold|ero|elves|femdom|foot|gangbang|glasses|hentai|incest|masturbation|pantsu|orgy|tentacles|thighs|uniform|vagina|yuri)$/i
 module.exports = handler
