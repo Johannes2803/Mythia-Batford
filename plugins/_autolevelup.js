@@ -30,11 +30,9 @@ ${teks}
       if (global.support.convert || global.support.magick || global.support.gm) {
         let fontLevel = 'src/level_c.otf'
         let fontTexts = 'src/texts.otf'
-        let xtsx = 'src/lvlup_template.jpg'
         let bufs = []
         const [_spawnprocess, ..._spawnargs] = [...(global.support.gm ? ['gm'] : global.support.magick ? ['magick'] : []),
           'convert',
-          xtsx,
           '-font',
           fontTexts,
           '-fill',
@@ -63,14 +61,13 @@ ${teks}
           '+1370+260',
           lvlnow,
           '-append',
-          'jpg:-'
         ]
         spawn(_spawnprocess, _spawnargs)
           .on('error', e => {
             throw e
           })
           .on('close', () => {
-            this.sendFile(m.chat, Buffer.concat(bufs), 'result.jpg', str, m)
+            this.sendFile(m.chat, Buffer.concat(bufs), str, m)
           })
           .stdout.on('data', chunk => bufs.push(chunk))
 
