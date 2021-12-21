@@ -13,28 +13,25 @@ jpegThumbnail: fs.readFileSync('./logo.jpg')
   }
  }
 }
-let list = []
-  for (let i of owner.map(v => v + '@s.whatsapp.net')) {
-  list.push({
-            "displayName": this.getName(i),
-            "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:${this.getName(i)}\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-          })
+let listOwner = new Array()
+  for (let i of owner.map(v => v.replace(/\D/g, '') + '@s.whatsapp.net')) {
+  	listOwner.push({ vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;;;;\nFN:${this.getName(i)}\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Work\nURL;Web gwejh: https://github.com/Johannes2803\nEMAIL;Email Owner: johannes123.j1@gmail.com\nORG: BUKAN BOT + NO SAVE\nTEL;NO CHAT P;waid= ${i.split('@')[0]}:${i.split('@')[0]}\nEND:VCARD` })
   }
-        test = await this.sendMessage(m.chat, {
-        "displayName": `${list.length} Contact`,
-        "contacts": list 
-        }, 'contactsArrayMessage', { quoted: fakegrup })
+  let send = this.sendMessage(m.chat, { displayName: listOwner.length + ' kontak', contacts: listOwner }, 'contactsArrayMessage', { quoted: fakegrup })
           let buttons = [
-  {buttonId: '#menu', buttonText: {displayText: 'MENU'}, type: 1},
+  {buttonId: '#donasi', buttonText: {displayText: 'DONASI'}, type: 1},
+  {buttonId: '#menu', buttonText: {displayText: 'BACK TO MENU'}, type: 1},
+  {buttonId: '#sc', buttonText: {displayText: 'SOURCE CODE'}, type: 1},  
+  
 ]
 const buttonsMessage = {
     contentText: `
-Nih Kak Kontak Owner Saya Jangan Di Spam Kak
-`.trim(),    footerText: ``,
+Hai Kak @${m.sender.replace(/@.+/, '')} 👋\nNih Kak Kontak Owner Saya Jangan Di Spam Kak
+`.trim(),    footerText: `${conn.getName(conn.user.jid)}`,
     buttons: buttons,
   headerType: 'EMPTY'
 }
-conn.sendMessage(m.chat, buttonsMessage, 'buttonsMessage', { quoted: test})
+conn.sendMessage(m.chat, buttonsMessage, 'buttonsMessage', { contextInfo: { mentionedJid: [m.sender]}})
 }
 handler.help = ['owner', 'creator']
 handler.tags = ['info']
