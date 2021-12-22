@@ -1,3 +1,4 @@
+
 let levelling = require('../lib/levelling')
 let { MessageType } = require('@adiwajshing/baileys')
 let fs = require('fs')
@@ -258,6 +259,7 @@ const ftroli = {
         setTimeout(resolve, 1000)
       }) * 1000
     }
+    let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.DATABASE.data.users).length
@@ -275,7 +277,21 @@ const ftroli = {
     if (teks == '404') {
       return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
         "listMessage": {
-          "title": `${ucapanWaktu}, ${tag}`.trim(),
+          "title": `${ucapanWaktu} ${name} 👋
+          
+❏ 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍
+» Nama : ${name}
+${about != 401 ? '» Bio: ' + about : ''} 
+» Tag : ${tag}
+» Limit : ${limit}\10
+» Premium : ${premium ? `✅\nPremium Expired: ${conn.msToDate(premiumTime - new Date() * 1)}` : '❌'}
+
+❏ 𝙏𝙄𝙈𝙀
+Wib : ${time}
+Tanggal : ${week} ${weton} ${date}
+
+Note: Jika ada Fitur yg Error Lapor ke owner
+`.trim(),
           "description": `© ${conn.getName(conn.user.jid)} || 2021`,
           "buttonText": "Klik Disini",
           "listType": "SINGLE_SELECT",
