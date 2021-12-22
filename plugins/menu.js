@@ -283,7 +283,7 @@ const ftroli = {
 » Nama : ${name}
 ${about != 401 ? '» Bio: ' + about : ''} 
 » Tag : ${tag}
-» Limit : ${limit}\10
+» Limit : ${limit} 
 » Premium : ${premium ? `✅\nPremium Expired: ${conn.msToDate(premiumTime - new Date() * 1)}` : '❌'}
 
 ❏ 𝙏𝙄𝙈𝙀
