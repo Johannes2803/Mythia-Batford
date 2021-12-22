@@ -5,7 +5,7 @@ let fs = require('fs')
 let path = require('path')
 let fetch = require('node-fetch')
 let moment = require('moment-timezone')
-let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
+let handler = async (m, { conn, usedPrefix: _p, args, command, text }) => {
  // BAGIAN TAG
  let tag = `@${m.sender.split('@')[0]} 👋`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
