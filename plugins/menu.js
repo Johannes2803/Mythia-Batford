@@ -224,7 +224,7 @@ const ftroli = {
                 }
           }
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
-    let { exp, limit, level, role, registered } = global.DATABASE.data.users[m.sender]
+    let { exp, limit, level, role, registered, premium } = global.DATABASE.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let name = registered ? global.DATABASE.data.users[m.sender].name : conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
