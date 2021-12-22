@@ -259,6 +259,7 @@ const ftroli = {
         setTimeout(resolve, 1000)
       }) * 1000
     }
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
     let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
