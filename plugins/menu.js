@@ -307,8 +307,12 @@ ${about != 401 ? '» Bio : ' + about : ''}
 ❏ 𝙏𝙄𝙈𝙀
 » Wib : ${time}
 » Tanggal : ${week} ${weton} ${date}
-» Tahun Baru : ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik 
-» Ulang Tahun Owner : ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik 
+
+❏ 𝙏𝘼𝙃𝙐𝙉 𝘽𝘼𝙍𝙐
+_${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik_
+
+❏ 𝙐𝙇𝘼𝙉𝙂 𝙏𝘼𝙃𝙐𝙉 𝙊𝙒𝙉𝙀𝙍
+_${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik_
 
 Note: Jika ada Fitur yg Error Lapor ke owner
 `.trim(),
