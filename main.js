@@ -10,6 +10,12 @@ let Readline = require('readline')
 let cp = require('child_process')
 let path = require('path')
 let fs = require('fs')
+try {
+  low = require('lowdb')
+} catch (e) {
+  low = require('./lib/lowdb')
+}
+const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
 
 let rl = Readline.createInterface(process.stdin, process.stdout)
