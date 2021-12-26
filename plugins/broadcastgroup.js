@@ -32,7 +32,7 @@ const anu = {
   let teks = text ? text : cc.text
   let content = await conn.cMod(m.chat, cc, /bc|broadcast/i.test(text) ? text : text + '\n' + readMore + '\n「 All Group Broadcast 」')
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${groups.length} grup_`, m)
-  for (let id of groups) conn.copyNForward(id, content, 'conversation', {quoted: anu, thumbnail: fs.readFileSync('./logo.jpg'), contextInfo:{externalAdReply: {title: `© ${conn.user.name} BROADCAST` , body: '>///<',sourceUrl: 'https://chat.whatsapp.com/Cc4T5iTdDU5GUtnWfaS5a3', thumbnail: fs.readFileSync('./logo.jpg')}}} ,true)
+  for (let id of groups) conn.copyNForward(id, content, 'conversation', {quoted: anu, thumbnail: fs.readFileSync('./logo.jpg'), contextInfo:{externalAdReply: {title: `© ${conn.user.name} BROADCAST` , body: '>///<',sourceUrl: 'https://chat.whatsapp.com/DYbwxUvMEzTEsOuYQnBDm2', thumbnail: fs.readFileSync('./logo.jpg')}}} ,true)
   conn.reply(m.chat, `_Done_`, m)
 }
 handler.help = ['broadcastgroup','bcgc'].map(v => v + ' <teks>')
@@ -55,4 +55,3 @@ const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 
 const randomID = length => require('crypto').randomBytes(Math.ceil(length * .5)).toString('hex').slice(0, length)
-
