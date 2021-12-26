@@ -4,14 +4,14 @@ let foto = fs.readFileSync('./logo2.jpg')
 let ness = fs.readFileSync('./logo5.jpg')
 global.DeveloperMode = 'false' //true Or false
 global.linkGC = ['https://chat.whatsapp.com/Ix8SHYHTYdB98ERHBUI2NA']
-global.owner = ['994407638407', '62895612153565', '62895603352610', '6285693120588', '6283829756773', '994407533488'] // Letakan nomor kamu disini
+global.owner = ['62895612153565', '6285892009320', '6283829756773'] // Letakan nomor kamu disini
 global.mods = [] // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
 global.APIs = { // API Prefix
   // nama: 'https://website'
   bx: 'https://bx-hunter.herokuapp.com',
   bg: 'http://bochil.ddns.net',
-  amel: 'https://melcanz.com',
+  amel: 'https://melcanz.net',
   hardianto: 'https://hardianto-chan.herokuapp.com',
   jonaz: 'https://jonaz-api-v2.herokuapp.com',
   neoxr: 'https://neoxr-api.herokuapp.com',
@@ -32,7 +32,7 @@ global.APIKeys = { // APIKey nya disini
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://rikka-api.herokuapp.com': 'beta',
   'https://pencarikode.xyz': 'pais',
-  'https://melcanz.com': 'trial',
+  'https://melcanz.net': 'trial',
   'https://api.lolhuman.xyz': 'Dawnfrostkey',
   'https://api.xteam.xyz': 'aruliazmi',
   'https://leyscoders-api.herokuapp.com': 'MIMINGANZ', 
@@ -42,7 +42,7 @@ global.APIKeys = { // APIKey nya disini
 
 // Sticker WM
 global.packname = 'I hope you\'re fine'
-global.author = 'YukiBot'
+global.author = 'Johannes'
 global.image = kontol
 global.image2 = foto
 global.image3 = ness
