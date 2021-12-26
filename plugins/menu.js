@@ -7,7 +7,7 @@ let fetch = require('node-fetch')
 let moment = require('moment-timezone')
 let handler = async (m, { conn, usedPrefix: _p, args, command, text }) => {
  // BAGIAN TAG
- let tag = `@${m.sender.split('@')[0]} 👋`
+ let tag = `@${m.sender.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
  let ow = `@${'62895612153565'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
@@ -28,16 +28,18 @@ imeg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gamba
 const defaultMenu = {
   before: `
 %me
-Hai, ${tag}!
+Hai, ${tag} 👋!
 
 Tersisa *%limit Limit*
 Role *%role*
 Level *%level (%exp / %maxexp)* [%xp4levelup]
 %totalexp XP secara Total
 
-Tanggal: *%week %weton, %date*
-Tanggal Islam: *%dateIslamic*
-Waktu: *%time*
+❏ *T I M E*
+
+- Tanggal: *%week %weton, %date*
+- Tanggal Islam: *%dateIslamic*
+- Waktu: *%time*
 
 
 ❏ *C R E A T O R*
@@ -250,6 +252,27 @@ const ftroli = {
       minute: 'numeric',
       second: 'numeric'
     })
+    const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
+    const wit = moment.tz('Asia/Jayapura').format("HH:mm:ss")
+    const hariRaya = new Date('January 1, 2022 23:59:59')
+    const sekarang = new Date().getTime()
+    const Selisih = hariRaya - sekarang
+    const jhari = Math.floor( Selisih / (1000 * 60 * 60 * 24));
+    const jjam = Math.floor( Selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const mmmenit = Math.floor( Selisih % (1000 * 60 * 60) / (1000 * 60))
+    const ddetik = Math.floor( Selisih % (1000 * 60) / 1000)
+    const ultah = new Date('March 28, 2022 23:59:59')
+    const sekarat = new Date().getTime() 
+    const Kurang = ultah - sekarat
+    const ohari = Math.floor( Kurang / (1000 * 60 * 60 * 24));
+    const ojam = Math.floor( Kurang % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const onet = Math.floor( Kurang % (1000 * 60 * 60) / (1000 * 60))
+    const detek = Math.floor( Kurang % (1000 * 60) / 1000)
+    let time = d.toLocaleTimeString(locale, {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    })
     let _uptime = process.uptime() * 1000
     let _muptime
     if (process.send) {
@@ -282,18 +305,20 @@ const ftroli = {
           
 ❏ 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍
 » Nama : ${name}
-${about != 401 ? '» Bio: ' + about : ''} 
+${about != 401 ? '» Bio : ' + about : ''} 
 » Tag : ${tag}
 » Limit : ${limit} 
 » Premium : ${premium ? `✅\nPremium Expired: ${conn.msToDate(premiumTime - new Date() * 1)}` : '❌'}
 
 ❏ 𝙏𝙄𝙈𝙀
-Wib : ${time}
-Tanggal : ${week} ${weton} ${date}
+» Wib : ${time}
+» Tanggal : ${week} ${weton} ${date}
+» Tahun Baru : ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik 
+» Ulang Tahun Owner : ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik 
 
 Note: Jika ada Fitur yg Error Lapor ke owner
 `.trim(),
-          "description": `© ${conn.getName(conn.user.jid)} || 2021`,
+          "description": "\n*© ${conn.getName(conn.user.jid)} || 2021*",
           "buttonText": "Klik Disini",
           "listType": "SINGLE_SELECT",
           "sections": [
