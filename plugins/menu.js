@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command, text }) => {
  // BAGIAN TAG
  let tag = `@${m.sender.split('@')[0]} 👋`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
- let ow = `@${'994407638407'.split('@')[0]}`
+ let ow = `@${'62895612153565'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
  let pat1 = `@${'6283829756773'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
