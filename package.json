@@ -74,6 +74,7 @@
     "qrcode-terminal": "^0.12.0",
     "sagiri": "^3.1.1",
     "similarity": "^1.2.1",
+    "steno": "^2.1.0",
     "socket.io": "^4.3.1",
     "speed-test": "^2.1.0",
     "spinnies": "^0.5.1",
