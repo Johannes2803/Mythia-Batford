@@ -1,9 +1,9 @@
-let fs = require('fs')
-  let fetch = require('node-fetch')
 let handler  = async (m, { conn, text }) => {
   let chats = conn.chats.all().filter(v => !v.read_only && v.message).map(v => v.jid)
-  let content = (/bc|broadcast/i.test(text) ? text : text + '\n' + readMore + '「 ' + conn.getName(conn.user.jid) + ' Broadcast 」')
-  for (let id of chats) conn.copyNForward(id, content, m.mtype, m.msg.contextInfo ? { thumbnail: fs.readFileSync('./logo..jpg'), contextInfo:{externalAdReply: {title: `© ${conn.user.name} BROADCAST` , body: '>///<',sourceUrl: 'https://chat.whatsapp.com/Cc4T5iTdDU5GUtnWfaS5a3', thumbnail: fs.readFileSync('./src/thumb.jpeg')}}} ,true)
+  let content = (/bc|broadcast/i.test(text) ? teks : '*「 BROADCAST 」*\n\n' + text + '\n')
+  for (let id of chats) conn.sendMessage(id, content, m.mtype, m.msg.contextInfo ? {
+    contextInfo: m.msg.contextInfo
+  } : {})
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} chat_`, m)
 }
 handler.help = ['broadcast','bc'].map(v => v + ' <teks>')
