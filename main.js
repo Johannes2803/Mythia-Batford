@@ -10,6 +10,14 @@ let Readline = require('readline')
 let cp = require('child_process')
 let path = require('path')
 let fs = require('fs')
+var low
+try {
+  low = require('lowdb')
+} catch (e) {
+  low = require('./lib/lowdb')
+}
+const { Low, JSONFile } = low
+const mongoDB = require('./lib/mongoDB')
 
 let rl = Readline.createInterface(process.stdin, process.stdout)
 let WAConnection = simple.WAConnection(_WAConnection)
@@ -25,18 +33,30 @@ global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse()
 
 global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°🐤=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
-global.DATABASE = new (require('./lib/database'))(`${opts._[0] ? opts._[0] + '_' : ''}database.json`, null, 2)
-if (!global.DATABASE.data.users) global.DATABASE.data = {
-  users: {},
-  chats: {},
-  stats: {},
-  msgs: {},
-  sticker: {},
+global.DATABASE = new Low(
+  /https?:\/\//.test(opts['DATABASE'] || '') ?
+    new cloudDBAdapter(opts['DATABASE']) : /mongodb/.test(opts['DATABASE']) ?
+      new mongoDB(opts['DATABASE']) :
+      new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
+)
+global.DATABASE = global.DATABASE // Backwards Compatibility
+global.loadDatabase = async function loadDatabase() {
+  if (global.DATABASE.READ) return new Promise((resolve) => setInterval(function () { (!global.DATABASE.READ ? (clearInterval(this), resolve(global.DATABASE.data == null ? global.loadDatabase() : global.DATABASE.data)) : null) }, 1 * 1000))
+  if (global.DATABASE.data !== null) return
+  global.DATABASE.READ = true
+  await global.DATABASE.read()
+  global.DATABASE.READ = false
+  global.DATABASE.data = {
+    users: {},
+    chats: {},
+    stats: {},
+    msgs: {},
+    sticker: {},
+    ...(global.DATABASE.data || {})
+  }
+  global.DATABASE.chain = _.chain(global.DATABASE.data)
 }
-if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
-if (!global.DATABASE.data.stats) global.DATABASE.data.stats = {}
-if (!global.DATABASE.data.msgs) global.DATABASE.data.msgs = {}
-if (!global.DATABASE.data.sticker) global.DATABASE.data.sticker = {}
+loadDatabase()
 global.conn = new WAConnection()
 let authFile = `${opts._[0] || 'session'}.data.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
