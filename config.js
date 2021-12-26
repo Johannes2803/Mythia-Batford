@@ -32,7 +32,7 @@ global.APIKeys = { // APIKey nya disini
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://rikka-api.herokuapp.com': 'beta',
   'https://pencarikode.xyz': 'pais',
-  'https://melcanz.net': 'trial',
+  'https://melcanz.net': 'rtwxnO3X',
   'https://api.lolhuman.xyz': 'Dawnfrostkey',
   'https://api.xteam.xyz': 'aruliazmi',
   'https://leyscoders-api.herokuapp.com': 'MIMINGANZ', 
