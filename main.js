@@ -10,13 +10,6 @@ let Readline = require('readline')
 let cp = require('child_process')
 let path = require('path')
 let fs = require('fs')
-var low
-try {
-  low = require('lowdb')
-} catch (e) {
-  low = require('./lib/lowdb')
-}
-const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
 
 let rl = Readline.createInterface(process.stdin, process.stdout)
@@ -124,7 +117,7 @@ if (opts['test']) {
     process.send(line.trim())
   })
   conn.connect().then(() => {
- conn.sendMessage('994407638407@c.us', 'Bot Telah Tersambung Ke Database YukiBot', 'conversation');
+ conn.sendMessage('62895612153565@c.us', '「 *NOTIFICATION!* 」\n\n _Bot Berhasil Terhubung!_', 'conversation');
     fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
