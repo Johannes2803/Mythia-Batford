@@ -57,9 +57,9 @@ Github:
 https://github.com/johannes2803
 
 %readmore`.trimStart(),
-  header: '┌─〔 %category 〕',
-  body: '├ %cmd %islimit %isPremium',
-  footer: '└────\n',
+  header: '❏ *category*',
+  body: '» %cmd %islimit %isPremium',
+  footer: '\n',
   after: `
 *%npmname@^%version*
 ${'```%npmdesc```'}
@@ -312,7 +312,7 @@ ${about != 401 ? '» Bio : ' + about : ''}
 
 Note: Jika ada Fitur yg Error Lapor ke owner
 `.trim(),
-          "description": "\n*© ${conn.getName(conn.user.jid)} || 2021*",
+          "description": `\n*© ${conn.getName(conn.user.jid)} || 2021*`,
           "buttonText": "Klik Disini",
           "listType": "SINGLE_SELECT",
           "sections": [
