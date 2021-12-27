@@ -12,7 +12,7 @@ global.APIs = { // API Prefix
   bx: 'https://bx-hunter.herokuapp.com',
   bg: 'http://bochil.ddns.net',
   amel: 'https://melcanz.net',
-  hardianto: 'https://hardianto-chan.herokuapp.com',
+  hardianto: 'https://hardianto.xyz',
   jonaz: 'https://jonaz-api-v2.herokuapp.com',
   neoxr: 'https://neoxr-api.herokuapp.com',
   rikka: 'https://rikka-api.herokuapp.com',
@@ -28,7 +28,7 @@ global.APIs = { // API Prefix
 global.APIKeys = { // APIKey nya disini
   // 'https://website': 'apikey'
   'https://bx-hunter.herokuapp.com': 'Ikyy69',
-  'https://hardianto-chan.herokuapp.com': 'hardianto',
+  'https://hardianto.xyz': 'hardianto',
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://rikka-api.herokuapp.com': 'beta',
   'https://pencarikode.xyz': 'pais',
