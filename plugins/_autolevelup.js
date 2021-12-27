@@ -15,11 +15,7 @@ handler.before = m => {
 ➸ Level :*${before}* -> *${user.level}* 
 Congratulations 🎉
  `.trim() 
-        conn.sendMessage(m.chat, str, m, {
-            contextInfo: {
-                mentionedJid: [m.sender]
-            }
-        })
+        conn.sendMessage(m.chat, str, m,)
     }
     return true
 }
