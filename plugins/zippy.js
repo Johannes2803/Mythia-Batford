@@ -9,12 +9,12 @@ let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
   let { ext, mime } = await require('file-type').fromBuffer(buffer)
   conn.sendMessage(m.chat, buffer, 'documentMessage', { mimetype: mime, filename: apis.data.result.name_file, quoted:m })
   } catch {
-  throw 'Error Bang!'
+  throw 'Error!!'
   }  
 }
 handler.help = ['zs', 'zippyshare'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(zippy|zs)$/i
+handler.command = /^(zippy|zs|zippydl)$/i
 handler.premium = false
 
 handler.exp = 0
