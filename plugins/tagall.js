@@ -1,3 +1,4 @@
+let { MessageType } = require('@adiwajshing/baileys')
 let handler = async(m, { conn, text, participants }) => {
   let teks = `══✪〘 *👥 Mention All* 〙✪══\n\n➲ *Message : ${text ? text : 'Nothing'}*\n\n`
 		      	for (let mem of participants) {
