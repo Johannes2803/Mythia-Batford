@@ -1,4 +1,4 @@
-let linkRegex = /chatt.whatsapppp.com\/([0-9A-Za-z]{20,24})/i
+let linkRegex = /chat.whatsap.com\/([0-9A-Za-z]{20,24})/i
 
 let handler = async (m, { conn, text, usedPrefix, participants, groupMetadata }) => {
     let [_, code] = text.match(linkRegex) || []
