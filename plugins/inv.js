@@ -74,9 +74,7 @@ Inventory *${name.vnmae || name.notify || name.name || ('+' + name.jid.split`@`[
 
 🦊 Rubah ${rubah == 0 ? 'Tidak Punya' : '' || rubah > 0 && rubah < 5 ? `Level *${rubah}* To level *${rubah + 1}*\nExp *${_rubah}* -> *${rubah *100}*` : '' || rubah == 5 ? '*Max Level*' : ''}
 
-
 🐈 Kucing ${kucing == 0 ? 'Tidak Punya' : '' || kucing > 0 && kucing < 5 ? `Level *${kucing}* To level *${kucing + 1}*\nExp *${_kucing}* -> *${kucing *100}*` : '' || kucing == 5 ? '*Max Level*' : ''}
-
 
 🐎 Kuda ${kuda == 0 ? 'Tidak Punya' : '' || kuda > 0 && kuda < 5 ? `Level *${kuda}* To level *${kuda + 1}*\nExp *${_kuda}* -> *${kuda *100}*` : '' || kuda == 5 ? '*Max Level*' : ''}
 \n\n
@@ -91,9 +89,11 @@ Inventory *${name.vnmae || name.notify || name.name || ('+' + name.jid.split`@`[
 8.Top Legendary *${userslegendary.indexOf(m.sender) + 1}* dari *${userslegendary.length}*
 9.Top Sampah *${userssampah.indexOf(m.sender) + 1}* dari *${userssampah.length}*
 10.Top Pet *${userspet.indexOf(m.sender) + 1}* dari *${userspet.length}*
-\n${readMore}
+\n${readMore}\n
+Warn: *${warn}*
+Banned: *No*
 `.trim()
-    conn.sendButton(m.chat, str, `Warn: *${warn}*\nBanned: *No*`, 'LEADERBOARD', '#lb', { quoted: m })
+    conn.reply(m.chat, str, m)
 }
 handler.help = ['inv']
 handler.tags = ['rpg']
