@@ -15,7 +15,7 @@ global.APIs = { // API Prefix
   hardianto: 'https://hardianto.xyz',
   jonaz: 'https://jonaz-api-v2.herokuapp.com',
   neoxr: 'https://neoxr-api.herokuapp.com',
-  rikka: 'https://rikka-api.herokuapp.com',
+  Velgrynd: 'https://api.ichikaa.xyz',
   nrtm: 'https://nurutomo.herokuapp.com',
   pencarikode: 'https://pencarikode.xyz',
   xteam: 'https://api.xteam.xyz',
@@ -38,6 +38,7 @@ global.APIKeys = { // APIKey nya disini
   'https://leyscoders-api.herokuapp.com': 'MIMINGANZ', 
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'ASJJMOFsjrVE8eZq1jgtGL4rGVE',
+  'https://api.ichikaa.xyz': '79lJ9HEA',
 }
 
 // Sticker WM
