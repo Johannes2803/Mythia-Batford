@@ -35,26 +35,24 @@ Level *%level (%exp / %maxexp)* [%xp4levelup]
 %totalexp XP secara Total
 
 ❏ *T I M E*
-
 - Tanggal: *%week %weton, %date*
 - Tanggal Islam: *%dateIslamic*
 - Waktu: *%time*
 
 
 ❏ *C R E A T O R*
-
 - ${ow}
 - ${waofc}
 
 ❏ *P A R T N E R*
-
 - ${pat1}
 - ${pat2}
 - ${pat3}
 
-Github:
-
-https://github.com/johannes2803
+❏ *G I T H U B*
+_%github_
+❏ *I N S T A G R A M*
+https://instagram.com/johannes28_
 
 %readmore`.trimStart(),
   header: '❏ *%category*',
