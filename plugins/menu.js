@@ -57,7 +57,7 @@ Github:
 https://github.com/johannes2803
 
 %readmore`.trimStart(),
-  header: '❏ *category*',
+  header: '❏ *%category*',
   body: '» %cmd %islimit %isPremium',
   footer: '\n',
   after: `
