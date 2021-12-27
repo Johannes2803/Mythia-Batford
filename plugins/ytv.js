@@ -1,4 +1,4 @@
-let limit = 30
+let limit = 50
 const { servers, ytv } = require('../lib/y2mate')
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
   await m.reply('Searching...')
@@ -19,7 +19,7 @@ Video sedang dikirim,, harap tunggu sekitar 1 menit.
 `.trim(), m)
 }
 handler.help = ['mp4','v',''].map(v => 'yt' + v + ' <url>')
-handler.tags = ['downloader', 'premium']
+handler.tags = ['downloader']
 handler.command = /^yt(v|mp4)?$/i
 handler.owner = false
 handler.mods = false
