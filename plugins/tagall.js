@@ -1,12 +1,16 @@
-let handler = async (m, { conn, text, participants }) => {
-  let users = participants.map(u => u.jid)
-  m.reply(text + '\n\n' + users.map(v => '@' + v.replace(/@.+/, '')).join`\n`, null, {
-    contextInfo: { mentionedJid: users }
-  })
+let handler = async(m, { conn, text, participants }) => {
+  let teks = `══✪〘 *👥 Mention All* 〙✪══\n\n➲ *Message : ${text ? text : 'Nothing'}*\n\n`
+		      	for (let mem of participants) {
+		            teks += `࿃➡️ @${mem.id.split('@')[0]}\n`
+				}
+                teks += `\n⋙ *Admin Group* ⋘`
+                conn.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, )
 }
-handler.command = ['tagall']
+handler.help = ['tagall <pesan>']
+handler.tags = ['group']
+handler.command = /^(tagall)$/i
 
-handler.admin = true
 handler.group = true
+handler.admin = true
 
 module.exports = handler
