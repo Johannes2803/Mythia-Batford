@@ -1,14 +1,13 @@
-let fetch = require('node-fetch')
+let Booru = require('booru')
 
-let handler = async (m, { conn, usedPrefix, command }) => {
-    let res = await fetch(API('lol', '/random2/waifu', {}, 'apikey'))
-    if (!res.ok) throw eror
-    let json = await res.json()
-    if (!json.status) throw json
-    conn.sendButtonImg(m.chat, json, 'Nieh banh lolinya', '', 'loli again', `${usedPrefix + command}`, m)
+let handler = async(m, { conn }) => {
+m.reply('Loading...')
+let img = await Booru.search('kn', ['loli'], { random: true })
+img = img[0].data
+await conn.sendFile(m.chat, img.file_url, '', '', m)
 }
 handler.help = ['loli']
-handler.tags = ['fun']
+handler.tags = ['anime']
 handler.command = /^(loli)$/i
 
 module.exports = handler
