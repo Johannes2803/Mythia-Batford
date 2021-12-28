@@ -1,6 +1,6 @@
 let handler = async (m, { conn }) => {
   m.reply('Loading...')
-  let res = `https://velgrynd.herokuapp.com/api/image/cosplay`
+  let res = `https://api.ichikaa.xyz/api/randomimage/cosplay?apikey=79lJ9HEA`
   conn.sendFile(m.chat, res, 'cosplay.jpg', 'huu suka ama cosplayer', m)
 }
 handler.help = ['cosplay']
