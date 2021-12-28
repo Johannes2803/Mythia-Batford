@@ -4,7 +4,7 @@ let foto = fs.readFileSync('./logo2.jpg')
 let ness = fs.readFileSync('./logo5.jpg')
 global.DeveloperMode = 'false' //true Or false
 global.linkGC = ['https://chat.whatsapp.com/Ix8SHYHTYdB98ERHBUI2NA']
-global.owner = ['62895612153565', '6285892009320', '6283829756773'] // Letakan nomor kamu disini
+global.owner = ['62895612153565', '6285892009320', '6283829756773', '6285755950256'] // Letakan nomor kamu disini
 global.mods = [] // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
 global.APIs = { // API Prefix
@@ -42,8 +42,8 @@ global.APIKeys = { // APIKey nya disini
 }
 
 // Sticker WM
-global.packname = 'I hope you\'re fine'
-global.author = 'Johannes'
+global.packname = 'Sticker'
+global.author = 'By Mythia-batford'
 global.image = kontol
 global.image2 = foto
 global.image3 = ness
