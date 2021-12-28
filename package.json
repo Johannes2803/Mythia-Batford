@@ -88,7 +88,6 @@
     "warn": "^1.0.1",
     "xmldom": "github:xmldom/xmldom#0.7.0",
     "yargs": "^16.2.0",
-    "yt-search": "^2.10.2",
-    "zs-extract": "^1.4.1"
+    "yt-search": "^2.10.1"
   }
 }
