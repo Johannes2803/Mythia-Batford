@@ -1,14 +1,22 @@
-# Mythia Batford
+<p align="center">
+<img src="https://telegra.ph/file/883f605e383c3abfb4dba.jpg" alt="Mythia-Batford" width="500"/>
 
-<a href="https://github.com/Johannes2803/Mythia-Batford/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Johannes2803/Mythia-Batford?label=Forks&color=blue&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/Johannes2803/Mythia-Batford?label=Watchers&color=green&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/Johannes2803/Mythia-Batford?label=Stars&color=yellow&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/graphs/contributors"><img title="Contributors" src="https://img.shields.io/github/contributors/Johannes2803/Mythia-Batford?label=Contributors&color=blue&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/issues"><img title="Issues" src="https://img.shields.io/github/issues/Johannes2803/Mythia-Batford?label=Issues&color=success&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/issues?q=is%3Aissue+is%3Aclosed"><img title="Issues" src="https://img.shields.io/github/issues-closed/Johannes2803/Mythia-Batford?label=Issues&color=red&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/Johannes2803/Mythia-Batford?label=PullRequest&color=success&style=flat-square"></a>
-<a href="https://github.com/Johannes2803/Mythia-Batford/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/Johannes2803/Mythia-Batford?label=PullRequest&color=red&style=flat-square"></a>
 
+</p>
+<p align="center">
+<a href="#"><img title="Mythia-Batford Batford" src="https://img.shields.io/badge/Mythia-Batford-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+</p>
+<p align="center">
+<a href="https://github.com/Johannes2803/Mythia-Batford"><img title="Author" src="https://img.shields.io/badge/Author-Johannes-red.svg?style=for-the-badge&logo=github"></a>
+</p>
+<p align="center">
+<a href="https://github.com/Johannes2803/Mythia-Batford"><img title="Followers" src="https://img.shields.io/github/followers/ilmanhdyt?color=blue&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford"><img title="Stars" src="https://img.shields.io/github/stars/Johannes2803/Mythia-Batford?color=red&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Johannes2803/Mythia-Batford?color=red&style=flat-square"></a>
+<a href="https://github.com/Johannes2803/Mythia-Batford/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/Johannes2803/Mythia-Batford?label=Watchers&color=blue&style=flat-square"></a>
+</p>
+
+---
 ## RUN Bot Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Johannes2803/Mythia-Batford)
 ## Join Group Diskusi
