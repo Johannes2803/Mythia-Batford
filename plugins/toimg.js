@@ -1,7 +1,7 @@
 let fs = require('fs')
 const uwu = fs.readFileSync('./logo3.jpg')
 const gambar =[
-'./logo1.jpg',
+'./logo.jpg',
 './logo2.jpg',
 './logo3.jpg',
 ]
