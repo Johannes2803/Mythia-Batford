@@ -20,7 +20,7 @@ let handler = async (m, { conn, args }) => {
     m.reply(e + '')
     res = await tts(text)
   } finally {
-    conn.sendMessage(m.chat, res, 'audioMessage', { quoted: m, duration: 9999999999, fileLength: 9999999999  , ptt: !0})
+    conn.sendFile(m.chat, res, 'tts.opus', null, m, true)
   }
 }
 handler.help = ['tts <lang> <teks>']
