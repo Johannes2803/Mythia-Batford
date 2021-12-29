@@ -41,7 +41,7 @@ Daftar: ${registered ? '✅' : '❌'}
 Premium: ${premium ? `✅\nPremium Expired: ${conn.msToDate(premiumTime - new Date() * 1)}` : '❌'}
 Banned: ${banned ? '✅' : '❌'}
 `.trim()
-    await conn.sendFile(m.chat, pp, 'pp.jpg', str, m)
+    await conn.sendFile(m.chat, pp, 'pp.jpg', str, m, false, { contextInfo: { mentionedJid }})
   }
 }
 handler.help = ['profile [@user]']
