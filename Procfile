@@ -1,1 +1,1 @@
-web: node .
+web: pm2 start
