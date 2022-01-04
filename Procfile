@@ -1,1 +1,1 @@
-web: pm startup
+web: pm2 startup
