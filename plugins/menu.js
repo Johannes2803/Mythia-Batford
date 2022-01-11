@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command, text }) => {
  // BAGIAN TAG
  let tag = `@${m.sender.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
- let ow = `@${'62895612153565'.split('@')[0]}`
+ let ow = `@${'19592142111'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
  let pat1 = `@${'6283829756773'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
@@ -42,6 +42,8 @@ Level *%level (%exp / %maxexp)* [%xp4levelup]
 
 ❏ *C R E A T O R*
 - ${ow}
+
+❏ *TUKANG BANNED*
 - ${waofc}
 
 ❏ *P A R T N E R*
@@ -251,7 +253,7 @@ const ftroli = {
     })
     const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
     const wit = moment.tz('Asia/Jayapura').format("HH:mm:ss")
-    const hariRaya = new Date('January 1, 2022 23:59:59')
+    const hariRaya = new Date('January 1, 2023 23:59:59')
     const sekarang = new Date().getTime()
     const Selisih = hariRaya - sekarang
     const jhari = Math.floor( Selisih / (1000 * 60 * 60 * 24));
@@ -428,6 +430,10 @@ Note: Jika ada Fitur yg Error Lapor ke owner
                   "title": "Owner",
                   "description": "",
                   "rowId": `${_p}? owner`
+               }, {
+                  "title": "Source code",
+                  "description": "",
+                  "rowId": `${_p}? sc`
                 }
               ]
             }
@@ -461,6 +467,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
     // ├ ${_p + command} info
     // ├ ${_p + command} tanpa kategori
     // ├ ${_p + command} owner
+    // ├ ${_p + command} sc
     // └────  
     //     `.trim()
     let groups = {}
@@ -512,7 +519,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.sendMessage(m.chat, { "contentText": '𝙔𝙐𝙆𝙄𝘽𝙊𝙏 𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋', "footerText": text.trim(),
+    await conn.sendMessage(m.chat, { "contentText": '𝘽𝙊𝙏 𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋', "footerText": text.trim(),
 "buttons": [
 {buttonId: '.owner', buttonText: {displayText: 'OWNER BOT'}, type: 1},
 {buttonId: '.donasi', buttonText: {displayText: 'DONASI'}, type: 1}
@@ -525,7 +532,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
             "fileLength": "99999999999999",
             "pageCount": 99999999999999,
             "mediaKey": "XWv4hcnpGY51qEVSO9+e+q6LYqPR3DbtT4iqS9yKhkI=",
-            "fileName": "Yukibot Bot WhatsApp",
+            "fileName": "Bot WhatsApp",
             "fileEncSha256": "NI9ykWUcXKquea4BmH7GgzhMb3pAeqqwE+MTFbH/Wk8=",
             "directPath": "/v/t62.7118-24/35150115_287008086621545_8250021012380583765_n.enc?ccb=11-4&oh=6f0f730e5224c054969c276a6276a920&oe=61A21F46",
             "mediaKeyTimestamp": "1634472176",
