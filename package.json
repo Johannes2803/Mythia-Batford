@@ -38,6 +38,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "3.5.3",
     "@adiwajshing/baileys-md": "github:adiwajshing/baileys#multi-device",
+    "@bochilteam/scraper": "0.0.1",
     "xmldom": "github:xmldom/xmldom#0.7.0",
     "acrcloud": "^1.4.0",
     "awesome-phonenumber": "^2.47.0",
