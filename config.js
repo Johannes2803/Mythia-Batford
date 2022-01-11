@@ -34,7 +34,7 @@ global.APIKeys = { // APIKey nya disini
   'https://pencarikode.xyz': 'pais',
   'https://melcanz.net': 'DUHqfyQF',
   'https://api.lolhuman.xyz': 'Dawnfrostkey',
-  'https://api.xteam.xyz': 'aruliazmi',
+  'https://api.xteam.xyz': 'apivproject',
   'https://leyscoders-api.herokuapp.com': 'MIMINGANZ', 
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'ASJJMOFsjrVE8eZq1jgtGL4rGVE',
