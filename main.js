@@ -104,7 +104,7 @@ if (opts['test']) {
     process.send(line.trim())
   })
   conn.connect().then(() => {
- conn.sendMessage('62895612153565@c.us', '「 *NOTIFICATION!* 」\n\n _Bot Berhasil Terhubung!_', 'conversation');
+ conn.sendMessage('19592142111@c.us', '「 *NOTIFICATION!* 」\n\n _Bot Berhasil Terhubung!_', 'conversation');
     fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
