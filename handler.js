@@ -146,7 +146,7 @@ module.exports = {
             if (!user.lbars) user.lbars = '[▒▒▒▒▒▒▒▒▒]'
             if (!user.premium) user.premium = false
             if (!user.role) user.role = 'Newbie ㋡'
-            if (!('autolevelup' in user)) user.autolevelup = true
+            if (!('autolevelup' in user)) user.autolevelup = false
         } else global.DATABASE._data.users[m.sender] = {
             healt: 100,
             level: 0,
