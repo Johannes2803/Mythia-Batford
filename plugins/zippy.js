@@ -1,28 +1,16 @@
-let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
-  if (!text) throw 'Uhm...urlnya mana?'
-  try {
-  apii = global.API('lol', '/api/zippyshare', { url: text }, 'apikey')
-  apis = await require('axios').get(apii)
-  m.reply('Sabar Lagi Download...')
-  m.reply('Nama File : '+ apis.data.result.name_file)
-  buffer = await getBuffer(apis.data.result.download_url)
-  let { ext, mime } = await require('file-type').fromBuffer(buffer)
-  conn.sendMessage(m.chat, buffer, 'documentMessage', { mimetype: mime, filename: apis.data.result.name_file, quoted:m })
-  } catch {
-  throw 'Error!!'
-  }  
-}
-handler.help = ['zs', 'zippyshare'].map(v => v + ' <url>')
-handler.tags = ['downloader']
-handler.command = /^(zippy|zs|zippydl)$/i
-handler.premium = false
+let zsExtract = require('zs-extract')
 
-handler.exp = 0
+let handler = async (m, { conn, args }) => {
+ if (!args[0]) throw 'Uhm...url nya mana?'
+ let res = await zsExtract.extract(args[0])
+ let { download, filename } = res
+ m.reply(JSON.stringify(res, null, 2))
+ conn.sendFile(m.chat, download, filename, filename, m)
+}
+handler.help = ['ippydl', 'ippyshare','s'].map(v => 'z' + v + ' <url>')
+handler.tags = ['downloader']
+handler.command = /^z(ippydl|ippyshare|s)$/i
+
+handler.limit = true
 
 module.exports = handler
-
-async function getBuffer(url) {
-ff = await require('node-fetch')(url)
-fff = await ff.buffer()
-return fff
-}
