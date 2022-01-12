@@ -91,6 +91,7 @@
     "wa-sticker-formatter": "4.0.3",
     "warn": "^1.0.1",
     "yargs": "^16.2.0",
-    "yt-search": "^2.10.1"
+    "yt-search": "^2.10.1",
+    "zs-extract": "^1.4.1"
   }
 }
