@@ -540,7 +540,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
             "directPath": "/v/t62.7118-24/35150115_287008086621545_8250021012380583765_n.enc?ccb=11-4&oh=6f0f730e5224c054969c276a6276a920&oe=61A21F46",
             "mediaKeyTimestamp": "1634472176",
             "jpegThumbnail": fs.readFileSync('./logo.jpg'),
-  }}, 'buttonsMessage', { quoted: ftroli, contextInfo: { mentionedJid: conn.parseMention(text), forwardingScore: 999, isForwarded: true, externalAdReply :{ mediaUrl: 'https://youtube.com/channel/UC0hs_I8N3JntK5vO6KogavQ',mediaType: 2,title: `${ucapanWaktu} ${name}`,body: `${week} ${date}`,thumbnailUrl: 'https://telegra.ph/file/a901d87d072a40c7d4ee7.jpg', }}})  
+  }}, 'buttonsMessage', { contextInfo: { mentionedJid: conn.parseMention(text), forwardingScore: 999, isForwarded: true, externalAdReply :{ sourceUrl: 'https://chat.whatsapp.com/DYbwxUvMEzTEsOuYQnBDm2',mediaType: 2,title: `${ucapanWaktu} ${name}`,body: `${week} ${date}`,thumbnail: global.image }}})  
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
