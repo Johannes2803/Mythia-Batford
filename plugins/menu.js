@@ -520,7 +520,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     await conn.sendMessage(m.chat, { "contentText": text.trim(), "footerText": `*© ${conn.getName(conn.user.jid)} || 2021*`,
-"buttons": 
+"buttons": [
 {buttonId: '.owner', buttonText: {displayText: 'OWNER BOT'}, type: 1},
 {buttonId: '.donasi', buttonText: {displayText: 'DONASI'}, type: 1}
 ],
