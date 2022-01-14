@@ -16,6 +16,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command, text }) => {
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
  let pat3 = `@${'6282245731529'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let pat4= `@${'17608914335'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
  let waofc = `@${'0'.split('@')[0]}`
  m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
  try {
@@ -50,6 +52,7 @@ Level *%level (%exp / %maxexp)* [%xp4levelup]
 - ${pat1}
 - ${pat2}
 - ${pat3}
+- ${pat4}
 
 ❏ *G I T H U B*
 _%github_
@@ -521,8 +524,8 @@ Note: Jika ada Fitur yg Error Lapor ke owner
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     await conn.sendMessage(m.chat, { "contentText": text.trim(), "footerText": `*© ${conn.getName(conn.user.jid)} || 2021*`,
 "buttons": [
-{buttonId: '.owner', buttonText: {displayText: 'OWNER BOT'}, type: 1},
-{buttonId: '.donasi', buttonText: {displayText: 'DONASI'}, type: 1}
+{buttonId: '.owner', buttonText: {displayText: '.owner'}, type: 1},
+{buttonId: '.donasi', buttonText: {displayText: '.donasi'}, type: 1}
 ],
 "headerType": "DOCUMENT", "documentMessage": {
             "url": "https://mmg.whatsapp.net/d/f/Ah9LXq1Z_XnRLzlVnZSt6_yWxC6mp20xTpZRSJxc7TUP.enc",
@@ -537,7 +540,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
             "directPath": "/v/t62.7118-24/35150115_287008086621545_8250021012380583765_n.enc?ccb=11-4&oh=6f0f730e5224c054969c276a6276a920&oe=61A21F46",
             "mediaKeyTimestamp": "1634472176",
             "jpegThumbnail": fs.readFileSync('./logo.jpg'),
-  }}, 'buttonsMessage', { quoted: ftroli, sendEphemeral: true, contextInfo: { mentionedJid: conn.parseMention(text), forwardingScore: 999, isForwarded: true, externalAdReply :{ mediaUrl: 'https://www.instagram.com/p/CEOnVoVAdXQ3V5KhCHm6fArQwc7msEgbbHuBjE0/?utm_medium=copy_link',mediaType: 2,title: `${ucapanWaktu} ${name}`,body: `${week} ${date}`,thumbnailUrl: 'https://telegra.ph/file/a901d87d072a40c7d4ee7.jpg', }}})  
+  }}, 'buttonsMessage', { quoted: ftroli, contextInfo: { mentionedJid: conn.parseMention(text), forwardingScore: 999, isForwarded: true, externalAdReply :{ mediaUrl: 'https://youtube.com/channel/UC0hs_I8N3JntK5vO6KogavQ',mediaType: 2,title: `${ucapanWaktu} ${name}`,body: `${week} ${date}`,thumbnailUrl: 'https://telegra.ph/file/a901d87d072a40c7d4ee7.jpg', }}})  
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
