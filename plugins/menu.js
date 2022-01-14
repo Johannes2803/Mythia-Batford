@@ -519,8 +519,8 @@ Note: Jika ada Fitur yg Error Lapor ke owner
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.sendMessage(m.chat, { "contentText": '𝘽𝙊𝙏 𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋', "footerText": text.trim(),
-"buttons": [
+    await conn.sendMessage(m.chat, { "contentText": text.trim(), "footerText": `*© ${conn.getName(conn.user.jid)} || 2021*`,
+"buttons": 
 {buttonId: '.owner', buttonText: {displayText: 'OWNER BOT'}, type: 1},
 {buttonId: '.donasi', buttonText: {displayText: 'DONASI'}, type: 1}
 ],
