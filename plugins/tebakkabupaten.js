@@ -18,7 +18,7 @@ Ketik ${usedPrefix}tekb untuk bantuan
 Bonus: ${poin} XP
 `.trim()
     conn.tebakkabupaten[id] = [
-        await conn.sendButtonImg(m.chat, await (await fetch(json.url)).buffer(), caption, 'MYTHIA×YUTA', 'Bantuan', '.teka', m),
+        await conn.sendButtonImg(m.chat, await (await fetch(json.url)).buffer(), caption, 'MYTHIA×YUTA', 'Bantuan', '.ineedhelp', m),
         json, poin,
         setTimeout(async () => {
             if (conn.tebakkabupaten[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.title}*`, 'MYTHIA×YUTA', 'Tebak Kabupaten', '.tebakkabupaten', conn.tebakkabupaten[id][0])
