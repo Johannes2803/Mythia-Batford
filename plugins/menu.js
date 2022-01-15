@@ -266,10 +266,10 @@ const ftroli = {
     const hariRayaramadan = new Date('April 2, 2022 23:59:59')
     const sekarangg = new Date().getTime()
     const lebih = hariRayaramadan - sekarangg
-    const hari = Math.floor( lebih / (1000 * 60 * 60 * 24));
-    const jam = Math.floor( lebih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-    const menit = Math.floor( lebih % (1000 * 60 * 60) / (1000 * 60))
-    const detik = Math.floor( lebih % (1000 * 60) / 1000)
+    const harii = Math.floor( lebih / (1000 * 60 * 60 * 24));
+    const jamm = Math.floor( lebih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const menitt = Math.floor( lebih % (1000 * 60 * 60) / (1000 * 60))
+    const detikk = Math.floor( lebih % (1000 * 60) / 1000)
     const ultah = new Date('March 28, 2022 23:59:59')
     const sekarat = new Date().getTime() 
     const Kurang = ultah - sekarat
@@ -322,7 +322,7 @@ ${about != 401 ? '» Bio : ' + about : ''}
 _${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik_
 
 ❏ 𝙍𝘼𝙈𝘼𝘿𝘼𝙉
-_${hari} Hari ${jam} Jam ${menit} Menit ${detik} Detik_
+_${harii} Hari ${jamm} Jam ${menitt} Menit ${detikk} Detik_
 
 ❏ 𝙐𝙇𝘼𝙉𝙂 𝙏𝘼𝙃𝙐𝙉 𝙊𝙒𝙉𝙀𝙍
 _${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik_
