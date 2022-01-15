@@ -1,19 +1,23 @@
-const { MessageType } = require('@adiwajshing/baileys')
+let fs = require('fs')
+let handler = async (m, { conn, text }) => {
 
-let handler = async(m, { conn, text }) => {
-let who
-  if (m.isGroup) who = m.mentionedJid[0]
-  else who = m.chat
-  if (!who) throw 'Tag salah satu lah,dan masukkan nomor untuk di verivikasi !'
-  // if (participants.map(v=>v.jid).includes(global.conn.user.jid)) {
-    global.DATABASE._data.chats[m.chat].premium = true
-  var nomor = m.sender
-    m.reply(`*Done berhasil added User✅*\n\n*Nomor : wa.me/${nomor.split("@s.whatsapp.net")[0]}\n*Expired:* 30Days\n*Thanks For Added Premium !*`)
-  // } else m.reply('Ada nomor host disini...')
+    const json = JSON.parse(fs.readFileSync('./src/premium.json'))
+    let who
+    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+    else who = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.chat
+    if (json.includes(who.split`@`[0])) throw `${conn.getName(who)} sudah premium!`
+    json.push(`${who.split`@`[0]}`)
+    fs.writeFileSync('./src/premium.json', JSON.stringify(json))
+    m.reply(`${conn.getName(who)} sekarang premium!`)
+
+    delete require.cache[require.resolve('../config')]
+    require('../config')
+
 }
-handler.help = ['addprems <nomor>']
+handler.help = ['addprem [@user]']
 handler.tags = ['owner']
-handler.command = /^addprems$/i
-handler.rowner = true
+handler.command = /^(add|tambah|\+)prem$/i
+
+handler.owner = true
 
 module.exports = handler
