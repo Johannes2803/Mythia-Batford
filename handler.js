@@ -583,7 +583,7 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
                 profile: pp,
                 background: 'https://telegra.ph/file/4b90043328ec4825c0e71.jpg'
               }, 'apikey')
-              await this.sendButtonLoc(jid, action === 'add' ? wel : lea, text, 'Welcome Massage', action === 'add' ? 'selamat datang' : 'sampai jumpa', 'tes')
+              await this.sendButtonLoc(jid, action === 'add' ? wel : lea, text, 'MYTHIA×YUTA', action === 'add' ? 'selamat datang' : 'sampai jumpa', 'tes')
             }
           }
         }
