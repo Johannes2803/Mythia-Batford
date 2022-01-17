@@ -29,7 +29,7 @@ let handler = async (m, { conn, args: [event], text }) => {
             if (global.DATABASE.data.chats[m.chat].delete) return await conn.sendButton(m.chat, 'delete is active!', `${conn.getName(conn.user.jid)}`, 'matikan', '.on antidelete', m)
             deleted = m
             break
-        default: throw m.reply(`daftar event: add, bye, promote, demote, delete`)
+        default: throw `daftar event: add, bye, promote, demote, delete`
     }
     if (action) return conn.onParticipantsUpdate({
         jid: m.chat,
