@@ -230,7 +230,7 @@ const ftroli = {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
     let { exp, limit, level, role, registered, premium } = global.DATABASE._data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
-    let name = registered ? global.DATABASE.data.users[m.sender].name : conn.getName(m.sender)
+    let name = registered ? global.DATABASE._data.users[m.sender].name : conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
@@ -287,6 +287,7 @@ const ftroli = {
       }) * 1000
     }
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
+    et prem = global.prems.includes(who.split`@`[0])
     let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
@@ -312,7 +313,7 @@ const ftroli = {
 ${about != 401 ? '» Bio : ' + about : ''} 
 » Tag : ${tag}
 » Limit : ${limit} 
-» Premium : ${premium ? `✅\nPremium Expired: ${conn.msToDate(premiumTime - new Date() * 1)}` : '❌'}
+» Premium : ${prem ? '✅' : '❌'}
 
 ❏ 𝙏𝙄𝙈𝙀
 » Wib : ${time}
