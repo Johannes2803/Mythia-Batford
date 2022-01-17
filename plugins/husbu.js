@@ -6,7 +6,7 @@ let res = await axios.get(API('amel', '/husbu', {}, 'apikey'))
 let json = res.data
     conn.sendButtonImg(m.chat, json.result.image, json.result.teks, 'tes', 'husbu again', `${usedPrefix + command}`, m)
 }
-handler.help = ['husbu']
+handler.help = ['anime']
 handler.tags = ['fun']
 handler.command = /^(husbu)$/i
 
