@@ -287,7 +287,7 @@ const ftroli = {
       }) * 1000
     }
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
-    et prem = global.prems.includes(who.split`@`[0])
+    let prem = global.prems.includes(who.split`@`[0])
     let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
