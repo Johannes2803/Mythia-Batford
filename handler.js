@@ -569,20 +569,20 @@ ${(global.linkGC).map((v, i) => '*Group ' + (i + 1) + '*\n' + v).join`\n\n`}
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
                 (chat.sBye || this.bye || conn.bye || 'sampai jumpa, @user!')).replace(/@user/g, '@' + user.split('@')[0])
-              let wel = API('Velgrynd', '/api/welcome', {
+              let wel = API('hardianto', '/api/welcome3', {
+                profile: pp,
                 name: this.getName(user),
-                picurl: pp,
-                bgurl: 'https://telegra.ph/file/4b90043328ec4825c0e71.jpg',
-                mem: groupMetadata.participants.length,
-                gcname: this.getName(jid)
-              }, 'apikey')
-              let lea = API('Velgrynd', '/api/goodbye', {
+                bg: 'https://telegra.ph/file/4b90043328ec4825c0e71.jpg',
+                namegb: this.getName(jid),
+                member: groupMetadata.participants.length
+              })
+              let lea = API('hardianto', '/api/goodbye3', {
+                profile: pp,
                 name: this.getName(user),
-                picurl: pp,
-                bgurl: 'https://telegra.ph/file/4b90043328ec4825c0e71.jpg',
-                mem: groupMetadata.participants.length,
-                gcname: this.getName(jid)
-              }, 'apikey')
+                bg: 'https://telegra.ph/file/4b90043328ec4825c0e71.jpg',
+                namegb: this.getName(jid),
+                member: groupMetadata.participants.length
+              })
               await this.sendButtonLoc(jid, action === 'add' ? wel : lea, text, 'MYTHIA×YUTA', action === 'add' ? 'selamat datang' : 'sampai jumpa', 'tes')
             }
           }
