@@ -1,9 +1,6 @@
+let handler  = async (m, { conn, usedPrefix: _p }) => {
 let { performance } = require('perf_hooks')
 let fs = require('fs')
-let { MessageType } = require('@adiwajshing/baileys')
-let peli = fs.readFileSync('./logo.jpg')
-let pelo = fs.readFileSync('./logo.jpg')
-let handler = async (m, { conn }) => {
 function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
@@ -13,12 +10,12 @@ function kyun(seconds){
   var seconds = Math.floor(seconds % 60);
 
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
-  return `${pad(hours)}Jam ${pad(minutes)}Menit ${pad(seconds)}Detik`
+  return `\n\t\t*「 \t ${pad(hours)}Jam ${pad(minutes)}Menit ${pad(seconds)}Detik \t」*\n`
 }
 					runtime = process.uptime()
 					teks = `${kyun(runtime)}`
 					var itsme = `0@s.whatsapp.net`
-					var split = `YUKIBOT ">//<"`
+					var split = `Mythia Batford >//<`
 					const rtimebro = {
 					contextInfo: {
 					participant: itsme,
@@ -28,8 +25,22 @@ function kyun(seconds){
 									}
 								}
 							}
-						}
-						conn.sendMessage(m.chat, '```RUNTIME```', 'conversation', {thumbnail: pelo, contextInfo:{externalAdReply: {title: 'YUKIBOT ">//<"', sourceUrl: '', body: `${teks}`, thumbnail: peli}}})
+					}
+						    
+						     prep = conn.prepareMessageFromContent(m.chat, { orderMessage: { 
+itemCount: -10112006, status: 500,
+surface: 999,
+message: teks,
+description: 'pler',
+orderTitle: 'awikwok',
+token: '9',
+curreyCode: 'IDR',
+totalCurrencyCode: '>〰<',
+totalAmount1000: '1000000',
+sellerJid: '19592142111@s.whatsapp.net',
+thumbnail: global.image3
+}}, {contextInfo: null, quoted: m})
+conn.relayWAMessage(prep)
 				/*	conn.sendMessage(m.chat, `${teks}`, MessageType.text, rtimebro)*/
 }
 
