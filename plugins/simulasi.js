@@ -7,26 +7,26 @@ let handler = async (m, { conn, args: [event], text }) => {
         case 'add':
         case 'invite':
         case 'welcome':
-            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'welcome belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.1 w', m)
+            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'welcome belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.on welcome', m)
             action = 'add'
             break
         case 'bye':
         case 'kick':
         case 'leave':
         case 'remove':
-            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'welcome belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.1 w', m)
+            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'welcome belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.on welcome', m)
             action = 'remove'
             break
         case 'promote':
-            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'detect belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.1 detect', m)
+            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'detect belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.on detect', m)
             action = 'promote'
             break
         case 'demote':
-            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'detect belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.1 detect', m)
+            if (!global.DATABASE.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'detect belum diaktikan!', `${conn.getName(conn.user.jid)}`, 'aktifkan', '.on detect', m)
             action = 'demote'
             break
         case 'delete':
-            if (global.DATABASE.data.chats[m.chat].delete) return await conn.sendButton(m.chat, 'delete is active!', `${conn.getName(conn.user.jid)}`, 'matikan', '.1 antidelete', m)
+            if (global.DATABASE.data.chats[m.chat].delete) return await conn.sendButton(m.chat, 'delete is active!', `${conn.getName(conn.user.jid)}`, 'matikan', '.on antidelete', m)
             deleted = m
             break
         default: throw `daftar event: add, bye, promote, demote, delete`
