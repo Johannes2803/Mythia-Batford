@@ -1,15 +1,15 @@
 let { get } = require('axios')
 let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Uhm...kode nya mana?'
+  if (!args[0]) throw 'Uhm...kode nuklir nya mana?'
   m.reply('Searching....')
   let lol = global.API('lol', `/api/nhentaipdf/${args[0]}`, {}, 'apikey')
   let { result } = (await get(lol)).data
   if (result.includes('HTML')) throw `Code ${args[0]} Not Found!`
    conn.sendMessage(m.chat, await getBuffer(result), 'documentMessage', { quoted: m, filename: `${args[0]}.pdf`, mimetype: 'application/pdf' })
 }
-handler.help = ['nhentai'].map(v => v + ' <code>')
+handler.help = ['nhpdf'].map(v => v + ' <code>')
 handler.tags = ['dewasa']
-handler.command = /^(nhentai)$/i
+handler.command = /^(nhpdf)$/i
 handler.premium = false
 handler.limit = 1
 module.exports = handler
