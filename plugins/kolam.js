@@ -33,7 +33,7 @@ let zer = `
 } 
 handler.help = ['kolam']
 handler.customPrefix = ['kolam']
-handler.command = new RegExp
+handler.command = /^(kotak(ikan)?|kolam(ikan)?)$/i
 handler.register = false
 
 module.exports = handler
