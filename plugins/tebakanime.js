@@ -1,9 +1,8 @@
 let fetch = require('node-fetch')
-let timeout = 60000
-let poin = 2500
 
-let handler  = async (m, { conn, usedPrefix }) => {
-
+let timeout = 120000
+let poin = 500
+let handler = async (m, { conn, usedPrefix, command }) => {
     conn.tebakanime = conn.tebakanime ? conn.tebakanime : {}
     let id = m.chat
     if (id in conn.tebakanime) {
@@ -11,19 +10,21 @@ let handler  = async (m, { conn, usedPrefix }) => {
         throw false
     }
     let res = await fetch('http://zekais-api.herokuapp.com/tebakanime')
-    if (res.status !== 200) throw await res.text()
     let json = await res.json()
-    if (!json.status) throw json
-    let caption = `「 TEBAK ANIME 」\n\nWaktu : ${(timeout / 1000).toFixed(2)} Detik\nBonus : ${poin} XP\n\nAnime : ${json.Anime}`
+    let caption = `
+Timeout *${(timeout / 1000).toFixed(2)} detik*
+Ketik ${usedPrefix}wa untuk bantuan
+Bonus: ${poin} XP
+`.trim()
     conn.tebakanime[id] = [
-      await conn.sendFile(m.chat, json.image, 'tebakanime.jpg', caption, m),
-      json, poin,
-      setTimeout(() => {
-        if (conn.tebakanime[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah *${json.name}*\n\nAnime : ${json.Anime}\n\nUrl : ${json.url}\nDesk :\n${json.desc}`, conn.tebakanime[id][0])
-        delete conn.tebakanime[id]
-      }, timeout)
+        await conn.sendButtonImg(m.chat, await (await fetch(json.image)).buffer(), caption, footer, 'BANTUAN', '.wa', m),
+        json, poin,
+        setTimeout(async () => {
+            if (conn.tebakanime[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.name}*`, footer, 'Tebak Anime', `${usedPrefix + command}`, m)
+            delete conn.tebakanime[id]
+        }, timeout)
     ]
-  }
+}
 handler.help = ['tebakanime']
 handler.tags = ['game']
 handler.command = /^tebakanime$/i
