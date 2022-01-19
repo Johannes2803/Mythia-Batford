@@ -4,7 +4,7 @@ let fs = require('fs')
 
 let handler  = async (m, { conn, text }) => {
 
-let { exp, limit, level, role } = global.DATABASE._data.users[m.sender]]
+let { exp, limit, level, role } = global.DATABASE._data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
 let nama = conn.getName(m.sender)
 try {
