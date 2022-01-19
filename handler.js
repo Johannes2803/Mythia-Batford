@@ -634,7 +634,8 @@ Untuk mematikan fitur ini, ketik
     }
 }
 
-global.dfail = (type, m, conn, unreg, ftroli) => {
+global.dfail = (type, m, conn) => {
+ let name = conn.getName(m.sender)
   let msg = {
     rowner: '_*「 ! 」Owner Only*_', 
     owner: '_*「 ! 」Owner Only*_',
@@ -645,11 +646,9 @@ global.dfail = (type, m, conn, unreg, ftroli) => {
     admin: '_*「 ! 」Admin Group Only*_',
     botAdmin: '_*「 ! 」Jadi Kan Bot Admin Dulu Sebelum Menggunakan Fitur Ini*_',    
     nsfw : 'NFSW Not Active'
+    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar ${name}.16*`
   }[type]
   if (msg) return m.reply(msg)
-const ftoko = { key : { fromMe: false, participant : `0@s.whatsapp.net`, remoteJid: 'status@broadcast' },message: {orderMessage: { message: `BELUM TERDAFTAR`,thumbnail: fs.readFileSync("./logo.jpg")}}}
-  conn.sendButton(m.chat, `_*Hai Kak @${m.sender.replace(/@.+/, '')} Kamu Belum Terdaftar Dalam Database YukiBot.*_\n_*Silahkan Register Terlebih Dahulu*_\n\n_*Jika Kamu Tidak Paham Ketik #daftar namamu.umurmu*_`, '```DAFTAR DULU KAK```', 'REGISTER', '#registered', { quoted: ftoko, contextInfo: { mentionedJid: [m.sender]}})
-
 }
 
 let fs = require('fs')
