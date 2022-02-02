@@ -4,7 +4,7 @@ if (!text) throw `Masukkan query!`
               conn.reply(m.chat, awikwok, m)
 }
 handler.help = ['wangy <pasangan>']
-handler.tags = ['primbon']
+handler.tags = ['fun']
 handler.command = /^wangy/i
 handler.owner = false
 handler.mods = false
