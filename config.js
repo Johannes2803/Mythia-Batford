@@ -1,7 +1,7 @@
 let fs = require('fs')
-let kontol = fs.readFileSync('./logo4.jpg')
-let foto = fs.readFileSync('./logo2.jpg')
-let ness = fs.readFileSync('./logo5.jpg')
+let image1 = fs.readFileSync('./logo4.jpg')
+let image2 = fs.readFileSync('./logo2.jpg')
+let image3 = fs.readFileSync('./logo5.jpg')
 global.DeveloperMode = 'false' //true Or false
 global.linkGC = ['https://chat.whatsapp.com/Ix8SHYHTYdB98ERHBUI2NA']
 global.owner = ['19592142111', '17608914335', '6285892009320', '6283829756773', '6285755950256'] // Letakan nomor kamu disini
@@ -32,9 +32,9 @@ global.APIKeys = { // APIKey nya disini
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://rikka-api.herokuapp.com': 'beta',
   'https://pencarikode.xyz': 'pais',
-  'https://melcanz.net': 'DUHqfyQF',
-  'https://api.lolhuman.xyz': 'Dawnfrostkey',
-  'https://api.xteam.xyz': 'apivproject',
+  'https://melcanz.net': 'YOU_APIKEY',
+  'https://api.lolhuman.xyz': 'YOU_APIKEY',
+  'https://api.xteam.xyz': 'YOU_APIKEY',
   'https://leyscoders-api.herokuapp.com': 'MIMINGANZ', 
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'ASJJMOFsjrVE8eZq1jgtGL4rGVE',
@@ -44,9 +44,9 @@ global.APIKeys = { // APIKey nya disini
 // Sticker WM
 global.packname = 'Sticker'
 global.author = 'By Mythia-batford'
-global.image = kontol
-global.image2 = foto
-global.image3 = ness
+global.image = image1
+global.image2 = image2
+global.image3 = image3
 
 global.eror = '_[!] Fitur Ini Sedang Eror_'
 global.wait = '_tunggu_'
