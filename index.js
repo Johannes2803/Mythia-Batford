@@ -4,13 +4,13 @@ let path = require('path')
 let fs = require('fs')
 let package = require('./package.json')
 const CFonts  = require('cfonts')
-CFonts.say('YUKIBOT', {
-  font: 'console',
-  align: 'center',
-  gradient: ['red', 'yellow']
-})
-CFonts.say(`Made\n By\nJohannes`, {
+CFonts.say('Mythia Batford', {
   font: 'block',
+  align: 'center',
+  gradient: ['red', 'magenta']
+})
+CFonts.say(`'${package.name}' By @${package.author.name || package.author}`, {
+  font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
 })
