@@ -4,7 +4,7 @@ let image2 = fs.readFileSync('./logo2.jpg')
 let image3 = fs.readFileSync('./logo5.jpg')
 global.DeveloperMode = 'false' //true Or false
 global.linkGC = ['https://chat.whatsapp.com/Ix8SHYHTYdB98ERHBUI2NA']
-global.owner = ['6285374156223', '17608914335', '6285892009320', '6283829756773', '6285755950256'] // Letakan nomor kamu disini
+global.owner = ['3197010258237', '17608914335', '6285892009320', '6283829756773', '6285755950256'] // Letakan nomor kamu disini
 global.mods = [] // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
 global.APIs = { // API Prefix
@@ -48,7 +48,7 @@ global.image = image1
 global.image2 = image2
 global.image3 = image3
 
-global.eror = '_[!] Fitur Ini Sedang Eror_'
+global.eror = 'Error 404'
 global.wait = '_tunggu_'
 
 global.multiplier = 69 // Semakin tinggi, semakin sulit naik level
