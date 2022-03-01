@@ -645,8 +645,8 @@ global.dfail = (type, m, conn) => {
     private: '_*「 ! 」Private Only*_',
     admin: '_*「 ! 」Admin Group Only*_',
     botAdmin: '_*「 ! 」Jadi Kan Bot Admin Dulu Sebelum Menggunakan Fitur Ini*_',    
-    nsfw : 'NFSW Not Active'
-    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar ${name}.16*`
+    nsfw : 'NFSW Not Active',
+    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar ${name}.16*`,
   }[type]
   if (msg) return m.reply(msg)
 }
