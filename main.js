@@ -1,15 +1,28 @@
+require("http").createServer((_, res) => res.end("Uptime!")).listen(8080)
 require('./config.js')
-let { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
-let { generate } = require('qrcode-terminal')
-let syntaxerror = require('syntax-error')
-let simple = require('./lib/simple')
-//  let logs = require('./lib/logs')
-let { promisify } = require('util')
-let yargs = require('yargs/yargs')
-let Readline = require('readline')
-let cp = require('child_process')
-let path = require('path')
-let fs = require('fs')
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+const { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
+const cloudDBAdapter = require('./lib/cloudDBAdapter')
+const { generate } = require('qrcode-terminal')
+const syntaxerror = require('syntax-error')
+const simple = require('./lib/simple')
+//  const logs = require('./lib/logs')
+const { promisify } = require('util')
+const yargs = require('yargs/yargs')
+const Readline = require('readline')
+const cp = require('child_process')
+const _ = require('lodash')
+const path = require('path')
+const fs = require('fs')
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4104)
+var low
+try {
+  low = require('lowdb')
+} catch (e) {
+  low = require('./lib/lowdb')
+}
+const { Low, JSONFile } = low
 
 let rl = Readline.createInterface(process.stdin, process.stdout)
 let WAConnection = simple.WAConnection(_WAConnection)
@@ -172,14 +185,14 @@ global.reload = (_event, filename) => {
     let dir = path.join(pluginFolder, filename)
     if (dir in require.cache) {
       delete require.cache[dir]
-      if (fs.existsSync(dir)) conn.logger.info(`re - require plugin '${filename}'`)
+      if (fs.existsSync(dir)) conn.logger.info(`[🔄] re - require plugin '${filename}'`)
       else {
-        conn.logger.warn(`deleted plugin '${filename}'`)
+        conn.logger.warn(`[⛔] deleted plugin '${filename}'`)
         return delete global.plugins[filename]
       }
-    } else conn.logger.info(`requiring new plugin '${filename}'`)
+    } else conn.logger.info(`[✅] requiring new plugin '${filename}'`)
     let err = syntaxerror(fs.readFileSync(dir), filename)
-    if (err) conn.logger.error(`syntax error while loading '${filename}'\n${err}`)
+    if (err) conn.logger.error(`[❗] syntax error while loading '${filename}'\n${err}`)
     else try {
       global.plugins[filename] = require(dir)
     } catch (e) {
