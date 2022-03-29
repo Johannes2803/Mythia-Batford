@@ -83,7 +83,7 @@
     "socket.io": "^4.3.1",
     "speed-test": "^2.1.0",
     "spinnies": "^0.5.1",
-    "steno": "^2.1.0",
+    "steno": "^1.0.0",
     "syntax-error": "^1.4.0",
     "terminal-image": "^1.2.1",
     "translate-google-api": "^1.0.4",
