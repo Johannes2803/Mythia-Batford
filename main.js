@@ -104,7 +104,7 @@ if (opts['test']) {
     process.send(line.trim())
   })
   conn.connect().then(() => {
- conn.sendMessage('3197010258237@c.us', '「 *NOTIFICATION!* 」\n\n _Bot Berhasil Terhubung!_', 'conversation');
+ conn.sendMessage('6289637133848@c.us', '「 *NOTIFICATION!* 」\n\n _Bot Berhasil Terhubung!_\n_Silahkan Gambung Di Group Ini Jika Mau Info Update Fitur Dll_\nhttps://chat.whatsapp.com/DYbwxUvMEzTEsOuYQnBDm2', 'conversation');
     fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
