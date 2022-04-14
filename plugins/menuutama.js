@@ -17,11 +17,11 @@ let pp = 'https://telegra.ph/file/a2ae6cbfa40f6eeea0cf1.jpg'
   } catch (e) {
 
   }
-//*****************FAKE REPLY*********************
+//*****************Menu*********************
 let anu = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
  //*****************MENU*********************
  conn.send3ButtonVid(m.chat, res, `*${ucapWaktu} ${conn.getName(m.sender)}*`, `
-Saya Adalah Bot ${conn.getName(conn.user.jid)} Yg Di Kembangkan Oleh @${global.kontak[0].split`@`[0]} Silahkan Tekan Tombol Button "MENU" Untuk Melihat List Command Dari Bot ${conn.getName(conn.user.jid)} Ketik .listmenu
+Hola acá tiene el menu ${conn.getName(conn.user.jid)} Yg Di Kembangkan Oleh @${global.kontak[0].split`@`[0]} Silahkan Tekan Tombol Button "MENU" Untuk Melihat List Command Dari Bot ${conn.getName(conn.user.jid)} Ketik .listmenu
 Support By doujindesu.com
 Powered By @${global.kontak[0].split`@`[0]}`.trim(), 'LIST MENU', '.listmenu', 'OWNER', '.owner', 'THANKS TO', 'tqto', 'conversation', { quoted: anu, thumbnail: global.image1,contextInfo: { mentionedJid: ['6289637133848@s.whatsapp.net'], forwardingScore: 999, isForwarded: true, externalAdReply: { title: `${ucapWaktu}`, body: `Time: ${clock}\nRuntime: ${Rtime}`, mediaUrl: 'https://www.facebook.com/Inunime-107082474576049/', mediaType: 2, thumbnail: await (await fetch(pp)).buffer()}}})
 }
